@@ -1,8 +1,9 @@
 {
   "/api/admin/signup/list": "/signupList",
   "/api/admin/user/list": "/userList",
+  "/api/admin/search": "/usersearch",
   "/api/admin/vacation/pending": "/vacationPending",
-  "/api/admin/vacation/list": "/vacationList",
   "/api/admin/duty/pending": "/dutyPending",
-  "/api/admin/duty/list": "/dutyList"
+  "/api/admin/vacation/approve/list": "/vacationList",
+  "/api/admin/duty/approve/list": "/dutyApproveList"
 }

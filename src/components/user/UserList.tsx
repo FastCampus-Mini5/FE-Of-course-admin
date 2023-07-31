@@ -1,7 +1,6 @@
 import axios from "axios";
 import styled  from 'styled-components'
 import {useState, useEffect} from 'react'
-// import UserListTable from './UserListTable'
 import {Table} from 'antd'
 
 interface User {
@@ -10,25 +9,6 @@ interface User {
   hireDate: string
   reaminVacation: number
 }
-
-// const headers = [
-//   {
-//     text: '사원명',
-//     value: 'username'
-//   },
-//   {
-//     text: 'E-mail',
-//     value: 'email'
-//   },
-//   {
-//     text: '입사일',
-//     value: 'hireDate'
-//   },
-//   {
-//     text: '승인여부',
-//     value: 'pending'
-//   }
-// ]
 
 function UserList() {
   const [userLists, setUserLists] = useState<User[]>([])

@@ -1,7 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { App,ErrorComponent } from 'components/index'
 import SignIn from './SignIn'
-import Annual from './Annual'
+import Vacation from './Vacation'
+import VacationPending from './VacationPending'
 import User from './User'
 import Duty from './Duty'
 export const router = createBrowserRouter([
@@ -17,8 +18,14 @@ export const router = createBrowserRouter([
         children: []
       },
       {
-        path: '/annual',
-        element: <Annual />,
+        path: '/vacation',
+        element: <Vacation />,
+        errorElement: <ErrorComponent />,
+        children: []
+      },
+      {
+        path: '/vacationpending',
+        element: <VacationPending />,
         errorElement: <ErrorComponent />,
         children: []
       },

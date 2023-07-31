@@ -9,29 +9,30 @@ export const router = createBrowserRouter([
     path: '/',
     element: <App />,
     errorElement: <ErrorComponent />,
-    children: []
+    children: [
+      {
+        path: '/user',
+        element: <User />,
+        errorElement: <ErrorComponent />,
+        children: []
+      },
+      {
+        path: '/annual',
+        element: <Annual />,
+        errorElement: <ErrorComponent />,
+        children: []
+      },
+      {
+        path: '/duty',
+        element: <Duty />,
+        errorElement: <ErrorComponent />,
+        children: []
+      }
+    ]
   },
   {
     path: '/signin',
     element: <SignIn />,
-    errorElement: <ErrorComponent />,
-    children: []
-  },
-  {
-    path: '/user',
-    element: <User />,
-    errorElement: <ErrorComponent />,
-    children: []
-  },
-  {
-    path: '/annual',
-    element: <Annual />,
-    errorElement: <ErrorComponent />,
-    children: []
-  },
-  {
-    path: '/duty',
-    element: <Duty />,
     errorElement: <ErrorComponent />,
     children: []
   }

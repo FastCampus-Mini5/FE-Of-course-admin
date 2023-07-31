@@ -5,5 +5,5 @@
   "/api/admin/vacation/pending": "/vacationPending",
   "/api/admin/duty/pending": "/dutyPending",
   "/api/admin/vacation/approve/list": "/vacationList",
-  "/api/admin/duty/approve/list": "/dutyApproveList"
+  "/api/admin/duty/approve/list": "/dutyList"
 }

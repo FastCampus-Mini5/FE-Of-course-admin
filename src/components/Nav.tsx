@@ -10,6 +10,7 @@ function Nav() {
           <StyledNavitem to = '/user' >  유저 리스트</StyledNavitem>
           <StyledNavitem to = '/vacationpending'>연차 요청 리스트</StyledNavitem>
           <StyledNavitem to = '/vacation'> 연차 리스트</StyledNavitem>
+          <StyledNavitem to = '/dutypending'> 당직 요청 리스트</StyledNavitem>
           <StyledNavitem to = '/duty'> 당직 리스트</StyledNavitem>
         </StyledNavContainer>
         <div>

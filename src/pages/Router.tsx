@@ -5,6 +5,7 @@ import Vacation from './Vacation'
 import VacationPending from './VacationPending'
 import User from './User'
 import Duty from './Duty'
+import DutyPending from './DutyPending'
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -32,6 +33,12 @@ export const router = createBrowserRouter([
       {
         path: '/duty',
         element: <Duty />,
+        errorElement: <ErrorComponent />,
+        children: []
+      },
+      {
+        path: '/dutypending',
+        element: <DutyPending />,
         errorElement: <ErrorComponent />,
         children: []
       }

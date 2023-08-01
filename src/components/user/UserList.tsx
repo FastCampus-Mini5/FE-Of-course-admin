@@ -1,7 +1,6 @@
 import axios from "axios";
 import styled  from 'styled-components'
 import {useState, useEffect} from 'react'
-// import UserListTable from './UserListTable'
 import {Table} from 'antd'
 
 interface User {
@@ -11,24 +10,6 @@ interface User {
   reaminVacation: number
 }
 
-// const headers = [
-//   {
-//     text: '사원명',
-//     value: 'username'
-//   },
-//   {
-//     text: 'E-mail',
-//     value: 'email'
-//   },
-//   {
-//     text: '입사일',
-//     value: 'hireDate'
-//   },
-//   {
-//     text: '승인여부',
-//     value: 'pending'
-//   }
-// ]
 
 function UserList() {
   const [userLists, setUserLists] = useState<User[]>([])
@@ -125,12 +106,6 @@ function UserList() {
   return (
     <>
       <div>UserList</div>
-      {/* <UserListTable 
-        headers = { headers }
-        items = { userLists }
-        selectable = {true}
-        updateSelection={setSelection}
-      /> */}
       <StyleTable
         dataSource={tableItemSource}
         columns={itemColumns}
@@ -152,4 +127,5 @@ const StyleTable = styled(Table)`
   .userListTable {
     text-align: center;
   }
+  min-width: 1000px;
 `

@@ -27,7 +27,7 @@ const StyledDiv = Styled.div`
 `
 
 const StyledNavContainer = Styled.div`
-  width: 200px;
+  min-width: 200px;
   height: 100vh;
   background-color: #66ffff;
   justify-content: center;

@@ -1,6 +1,10 @@
+import DutyList from "@/components/duty/DutyList"
+
 function Duty() {
   return (
-    <div>Duty</div>
+    <>
+      <DutyList />
+    </>
   )
 }
 

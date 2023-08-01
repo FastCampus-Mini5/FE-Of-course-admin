@@ -1,7 +1,7 @@
-import axios from "axios";
 import styled  from 'styled-components'
 import {useState, useEffect} from 'react'
 import {Table} from 'antd'
+import { userListApi } from "@/api/api";
 
 interface User {
   username: string,
@@ -10,21 +10,22 @@ interface User {
   reaminVacation: number
 }
 
-
 function UserList() {
   const [userLists, setUserLists] = useState<User[]>([])
 
-  const userListsApi = async () => {
+  const userList = async () => {
     try {
-      const { data } = await axios.get('http://localhost:8001/api/admin/user/list')
-      setUserLists(data.response)
+      const res = await userListApi()
+      if(res) {
+        setUserLists(res.data.response)        
+      }
     } catch (error) {
       console.error('error : ' + error);
     }
   }
   
   useEffect(() => {
-    userListsApi()
+    userList()
   }, [])
 
 

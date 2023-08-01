@@ -1,0 +1,277 @@
+{
+  "signupList": {
+    "status": 200,
+    "success": true,
+    "response": [
+        {
+            "username": "홍길동",
+            "email": "test@test.com",
+            "hireDate": "2023-07-26T07:39:38.021+00:00"
+        },
+        {
+            "username": "청길은",
+            "email": "test@test2.com",
+            "hireDate": "2023-07-26T07:39:38.021+00:00"
+        },
+        {
+            "username": "녹길금",
+            "email": "test@test3.com",
+            "hireDate": "2023-07-26T07:39:38.021+00:00"
+        }
+    ],
+    "error": null
+  },
+  "userList": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "username": "홍길동",
+        "email": "test@test.com",
+        "hireDate": "2023-07-26T07:39:38.021+00:00",
+        "reaminVacation": 1
+      },
+      {
+        "username": "청길은",
+        "email": "test@test2.com",
+        "hireDate": "2023-07-26T07:39:38.021+00:00",
+        "reaminVacation": 3
+      },
+      {
+        "username": "녹길금",
+        "email": "test@test3.com",
+        "hireDate": "2023-07-26T07:39:38.021+00:00",
+        "reaminVacation": 6
+      }
+    ],
+    "error": null
+  },
+  "vacationPending": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "username": "홍길동",
+        "email": "test@test.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "정정길",
+        "email": "test@test1.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "청길은",
+        "email": "test@test2.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "녹길음",
+        "email": "test@test3.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      }
+    ],
+    "error": null
+  },
+  "dutyPending": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "username": "홍길동",
+        "email": "test@test.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "청길은",
+        "email": "test@test2.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "녹길금",
+        "email": "test@test3.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      }
+    ],
+    "error": null
+  },
+  "vacationList": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "username": "junior",
+        "email": "test6@test.com",
+        "reason": "휴가",
+        "createdAt": "2023-07-26T15:00:00.000+00:00",
+        "startDate": "2023-08-06T15:00:00.000+00:00",
+        "endDate": "2023-08-06T15:00:00.000+00:00"
+    },
+    {
+        "username": "senior",
+        "email": "test5@test.com",
+        "reason": "병가",
+        "createdAt": "2023-07-26T15:00:00.000+00:00",
+        "startDate": "2023-07-29T15:00:00.000+00:00",
+        "endDate": "2023-07-29T15:00:00.000+00:00"
+    },
+    {
+        "username": "manager",
+        "email": "test4@test.com",
+        "reason": "휴가",
+        "createdAt": "2023-07-26T15:00:00.000+00:00",
+        "startDate": "2023-08-07T15:00:00.000+00:00",
+        "endDate": "2023-08-07T15:00:00.000+00:00"
+    },
+    {
+        "username": "cto",
+        "email": "test3@test.com",
+        "reason": "휴가",
+        "createdAt": "2023-07-26T15:00:00.000+00:00",
+        "startDate": "2023-08-05T15:00:00.000+00:00",
+        "endDate": "2023-08-05T15:00:00.000+00:00"
+    },
+    {
+        "username": "cfo",
+        "email": "test2@test.com",
+        "reason": "병가",
+        "createdAt": "2023-07-26T15:00:00.000+00:00",
+        "startDate": "2023-07-31T15:00:00.000+00:00",
+        "endDate": "2023-07-31T15:00:00.000+00:00"
+    },
+    {
+        "username": "ceo",
+        "email": "test1@test.com",
+        "reason": "휴가",
+        "createdAt": "2023-07-26T15:00:00.000+00:00",
+        "startDate": "2023-07-26T15:00:00.000+00:00",
+        "endDate": "2023-07-26T15:00:00.000+00:00"
+    }
+    ],
+    "error": null
+  },
+  "dutyList": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "username": "홍길동",
+        "email": "test@test.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "청길은",
+        "email": "test@test2.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "녹길금",
+        "email": "test@test3.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      }
+    ],
+    "error": null
+  },
+  "userInfo": {
+    "status": 200,
+    "success": true,
+    "response": {
+      "username": "홍길동",
+      "email": "test@test.com",
+      "profileImage": "https://~",
+      "hireDate": "2023-07-26T07:39:38.021+00:00"
+    },
+    "error": null
+  },
+  "myVacation": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "id": 1,
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "id": 2,
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "id": 3,
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "id": 4,
+        "startDate": "2023-07-26T07:39:38.021+00:00",
+        "endDate": "2023-07-26T07:39:38.021+00:00"
+      }
+    ],
+    "error": null
+  },
+  "myDuty": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "id": 1,
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "id": 2,
+        "dutyDate": "2023-07-27T07:39:38.021+00:00"
+      },
+      {
+        "id": 3,
+        "dutyDate": "2023-07-28T07:39:38.021+00:00"
+      },
+      {
+        "id": 4,
+        "dutyDate": "2023-07-30T07:39:38.021+00:00"
+      }
+    ],
+    "error": null
+  },
+  "eventList": {
+    "status": 200,
+    "success": true,
+    "response": [
+      {
+        "username": "홍길동",
+        "email": "test@test.com",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "청길은",
+        "email": "test@test2.com",
+        "dutyDate": "2023-07-27T07:39:38.021+00:00"
+      },
+      {
+        "username": "홍길동",
+        "email": "test@test.com",
+        "dutyDate": "2023-07-28T07:39:38.021+00:00"
+      },
+      {
+        "username": "녹길금",
+        "email": "test@test3.com",
+        "dutyDate": "2023-07-30T07:39:38.021+00:00"
+      }
+    ],
+    "error": null
+  }
+}

@@ -6,7 +6,6 @@ export const App = () => {
 
   return (
     <>
-      <NavLink to = '/'>홈</NavLink>
       <Nav />
     </>
   )

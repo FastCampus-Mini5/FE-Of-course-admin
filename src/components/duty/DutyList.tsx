@@ -1,7 +1,7 @@
-import axios from "axios"
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import SelectPeriod from "./SelectPeriod"
+import { DutyListApi } from '@/api/api'
 interface DutyList {
   username: string
   email: string
@@ -12,17 +12,17 @@ interface DutyList {
 function DutyList() {
   const [dutyLists, setDutyLists] = useState<DutyList[]>([])
 
-  const DutyListApi = async() => {
+  const DutyList = async() => {
     try {
-      const { data } = await axios.get('http://localhost:8001/api/admin/duty/approve/list')
-      setDutyLists(data.response)
+      const res = await DutyListApi()
+      setDutyLists(res.data.response)
     } catch (error) {
       console.error('error : ' + error)
     }
   }
 
   useEffect(() => {
-    DutyListApi()
+    DutyList()
   }, [])
 
   // table

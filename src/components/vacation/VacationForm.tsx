@@ -11,7 +11,7 @@ interface Annual {
   endDate: string
 }
 
-function VacationList() {
+export const VacationForm = () => {
   const [vacationLists, setVacationLists] = useState<Annual[]>([])
 
   const vacationList = async () =>{
@@ -42,37 +42,44 @@ function VacationList() {
     {
       title: '번호',
       dataIndex: 'key',
-      key: 'key'
+      key: 'key',
+      align: 'center' as 'center'
     },
     {
       title: '성명',
       dataIndex: 'username',
-      key: 'username'
+      key: 'username',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '사유',
       dataIndex: 'reason',
-      key: 'reason'
+      key: 'reason',
+      align: 'center' as 'center'
     },
     {
       title: '신청일',
       dataIndex: 'createAt',
-      key: 'createAt'
+      key: 'createAt',
+      align: 'center' as 'center'
     },
     {
       title: '시작일',
       dataIndex: 'startDate',
-      key: 'startDate'
+      key: 'startDate',
+      align: 'center' as 'center'
     },
     {
       title: '종료일',
       dataIndex: 'endDate',
-      key: 'endDate'
+      key: 'endDate',
+      align: 'center' as 'center'
     },
   ]
 
@@ -86,5 +93,3 @@ function VacationList() {
     </>
   )
 }
-
-export default VacationList

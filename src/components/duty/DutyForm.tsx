@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
-import SelectPeriod from "./SelectPeriod"
+import {SelectPeriod} from "./SelectPeriod"
 import { DutyListApi } from '@/api/api'
 interface DutyList {
   username: string
@@ -9,7 +9,7 @@ interface DutyList {
   dutyDate: string
 }
 
-function DutyList() {
+export const DutyForm = () => {
   const [dutyLists, setDutyLists] = useState<DutyList[]>([])
 
   const DutyList = async() => {
@@ -38,27 +38,32 @@ function DutyList() {
     {
       title: '번호',
       dataIndex: 'key',
-      key: 'key'
+      key: 'key',
+      align: 'center' as 'center'
     },
     {
       title: '성명',
       dataIndex: 'username',
-      key: 'username'
+      key: 'username',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
-      key: 'createdDate'
+      key: 'createdDate',
+      align: 'center' as 'center'
     },
     {
       title: '당직일',
       dataIndex: 'dutyDate',
-      key: 'dutyDate'
+      key: 'dutyDate',
+      align: 'center' as 'center'
     },
   ]
 
@@ -73,5 +78,3 @@ function DutyList() {
     </>
   )
 }
-
-export default DutyList

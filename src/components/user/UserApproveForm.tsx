@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import { userApproveApi } from '@/api/api'
+import styled from 'styled-components'
+import { UserApproveButton } from './UserApproveButton'
 
 interface UserApprove {
   username: string
@@ -10,16 +12,15 @@ interface UserApprove {
 
 
 
-function UserApprove() {
+export const UserApproveForm = () => {
   const [userApproveLists, setUserApproveLists] = useState<UserApprove[]>([])
 
   const userApprove = async () => {
     try {
       const res = await userApproveApi()
-      if(res) [
+      if(res) {
         setUserApproveLists(res.data.response)
-      ]
-
+      }
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -37,53 +38,58 @@ function UserApprove() {
     username: item.username,
     email: item.email,
     hireDate: item.hireDate,
-    approveButton: (
-      <button onClick={() => handleApprove(item.username)}>
-        승인
-      </button>
-    )
+    approveButton: <UserApproveButton email = {item.email}/>
   }))
 
   const tableColumns = [
     {
       title: '사원명',
       dataIndex: 'username',
-      key: 'username'
+      key: 'username',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '입사일',
       dataIndex: 'hireDate',
-      key: 'hireDate'
+      key: 'hireDate',
+      align: 'center' as 'center'
     },
     {
       title: '승인여부',
       dataIndex: 'approveButton',
-      key: 'approveButton'
+      key: 'approveButton',
+      align: 'center' as 'center'
     }
 
   ]
 
-  // 승인여부 버튼
-  function handleApprove(e: string){
-    console.log(e)
-  }
-
   return (
     <>
-      <span>userApprove</span>
-      <Table
-        dataSource={tableItemSources}
-        columns={tableColumns}
-        pagination = {{pageSize: 5, simple: true}}
-        size='large'
-      />
+      <div>
+        <span>
+          승인요청
+        </span>
+        <StyledTable
+          dataSource={tableItemSources}
+          columns={tableColumns}
+          pagination = {{pageSize: 5, simple: true}}
+          size='large'
+        />
+      </div>
     </>
   )
 }
 
-export default UserApprove
+const StyledTable = styled(Table)`
+  max-width: 800px;
+  margin-left: 50px;
+  .ant-table-wrapper {
+    width: 100%
+  }
+`

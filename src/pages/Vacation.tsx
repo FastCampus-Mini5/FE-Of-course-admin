@@ -1,13 +1,11 @@
-import VacationList from "@/components/vacation/VacationList"
+import {VacationForm} from "@/components/vacation/VacationForm"
 
-function Vacation() {
+export const Vacation = () => {
 
 
   return (
     <>
-      <VacationList />
+      <VacationForm />
     </>
   )
 }
-
-export default Vacation

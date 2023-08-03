@@ -1,16 +1,9 @@
 import axios from "axios"
 import { API_URL } from './Base';
 
-interface User {
-  username: string,
-  email: string,
-  hireDate: string
-  reaminVacation: number
-}
-
 export const userListApi = async() => {
   try {
-    const data = await axios.get(`${API_URL}/api/admin/user/list`)
+    const data = await axios.get(`${API_URL}/user/list`)
     if(data) {
       return data
     }
@@ -24,7 +17,7 @@ export const userListApi = async() => {
 
 export const userApproveApi = async() => {
   try {
-    const data = await axios.get(`${API_URL}/api/admin/signup/list`)
+    const data = await axios.get(`${API_URL}/signup/list`)
     if(data) {
       return data
     }
@@ -38,7 +31,7 @@ export const userApproveApi = async() => {
 
 export const vacationApi = async() => {
   try {
-    const data = await axios.get(`${API_URL}/api/admin/vacation/approve/list`)
+    const data = await axios.get(`${API_URL}/vacation/approve/list`)
     if(data) {
       return data
     } else {
@@ -51,7 +44,7 @@ export const vacationApi = async() => {
 
 export const vacationPendingApi = async() => {
   try {
-    const data = await axios.get(`${API_URL}/api/admin/vacation/pending`)
+    const data = await axios.get(`${API_URL}/vacation/pending`)
     if(data) {
       return data
     } else {
@@ -64,7 +57,7 @@ export const vacationPendingApi = async() => {
 
 export const DutyListApi = async() => {
   try {
-    const data = await axios.get(`${API_URL}/api/admin/duty/approve/list`)
+    const data = await axios.get(`${API_URL}/duty/approve/list`)
     if(data) {
       return data
     } else {
@@ -77,7 +70,7 @@ export const DutyListApi = async() => {
 
 export const DutyPeindingListsApi = async() => {
   try {
-    const data = await axios.get(`${API_URL}/api/admin/duty/pending`)
+    const data = await axios.get(`${API_URL}/duty/pending`)
     if(data) {
       return data
     } else {

@@ -1,11 +1,10 @@
-import DutyPendingList from "@/components/duty/DutyPendingList"
+import { DutyPendingForm } from "components/duty"
 
-function DutyPending() {
+
+export const DutyPending = () => {
   return (
     <>
-      <DutyPendingList />
+      <DutyPendingForm />
     </>
   )
 }
-
-export default DutyPending

@@ -1,38 +1,40 @@
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import styled from 'styled-components'
-import { DutyPeindingListsApi } from '@/api/api'
-interface DutyPending {
-  username : string
-  email: string
-  createdDate: string
-  dutyDate: string
+import { vacationPendingApi } from '@/api/api'
+
+interface VacationPendin {
+  username: string,
+  email: string,
+  createdDate: string,
+  startDate: string,
+  endDate: string
 }
 
-function DutyPending() {
-  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPending[]>([])
+export const VacationPendingForm = () => {
+  const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendin[]>([])
 
-  const dutyPendingList = async () => {
+  const vacationPendingList = async () => {
     try {
-      const res = await DutyPeindingListsApi()
-      setDutyPendingLists(res.data.response)
+      const { data } = await vacationPendingApi()
+      setVacationPendingLists(data.response)
     } catch (error) {
       console.error('error : ' + error)
     }
   }
 
   useEffect(() => {
-    dutyPendingList()
-  },[])
+    vacationPendingList()
+  }, [])
 
-  //table
-
-  const tableItemSource = dutyPendingLists.map((item, index) => ({
-    key: index+1,
-    ueername: item.username,
+  // table
+  const tableItemSource = vacationPendingLists.map((item, index) => ({
+    key: index,
+    username: item.username,
     email: item.email,
     createdDate: item.createdDate,
-    dutyDate: item.dutyDate,
+    startDate: item.startDate,
+    endDate: item.endDate,
     approveButton: (
       <StyleButton>
         <button onClick = {() => handleApprove(index)}>
@@ -42,6 +44,7 @@ function DutyPending() {
           거절
         </button>
       </StyleButton>
+
     )
   }))
 
@@ -53,8 +56,8 @@ function DutyPending() {
     },
     {
       title: '성명',
-      dataIndex: 'ueername',
-      key: 'ueername'
+      dataIndex: 'username',
+      key: 'username'
     },
     {
       title: '아이디',
@@ -67,12 +70,17 @@ function DutyPending() {
       key: 'createdDate'
     },
     {
-      title: '당직일',
-      dataIndex: 'dutyDate',
-      key: 'dutyDate'
+      title: '시작일',
+      dataIndex: 'startDate',
+      key: 'startDate'
     },
     {
-      title: '승인여부',
+      title: '종료일',
+      dataIndex: 'endDate',
+      key: 'endDate'
+    },
+    {
+      title: '확인',
       dataIndex: 'approveButton',
       key: 'approveButton'
     }
@@ -96,8 +104,6 @@ function DutyPending() {
     </>
   )
 }
-
-export default DutyPending
 
 const StyleButton = styled.div`
   display: flex;

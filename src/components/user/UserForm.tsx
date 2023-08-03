@@ -10,7 +10,7 @@ interface User {
   reaminVacation: number
 }
 
-function UserList() {
+export const UserForm = () => {
   const [userLists, setUserLists] = useState<User[]>([])
 
   const userList = async () => {
@@ -34,18 +34,8 @@ function UserList() {
     key: index+1,
     username: item.username,
     email: item.email,
-    hireDate: item.hireDate.replace(/T *$/, ''),
+    hireDate: item.hireDate,
     remainVacation: item.reaminVacation,
-    updatePassword: (
-      <button onClick={() => handleUpdatePassword(index)}>
-        비밀번호수정
-      </button>
-    ),
-    leave: (
-      <button onClick={() => handleLeave(index)}>
-        퇴사
-      </button>
-    )
   })) 
 
   const itemColumns = [
@@ -53,80 +43,70 @@ function UserList() {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
+      align: 'center' as 'center'
     },
     {
       title: '사원명',
       dataIndex: 'username',
       key: 'username',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '입사일',
       dataIndex: 'hireDate',
       key: 'hireDate',
+      align: 'center' as 'center'
     },
     {
       title: '전체연차',
       dataIndex: '',
       key: '',
+      align: 'center' as 'center'
     },
     {
       title: '잔여연차',
       dataIndex: 'remainVacation',
       key: 'remainVacation',
-    },
-    {
-      title: '비밀번호 수정',
-      dataIndex: 'updatePassword',
-      key: 'updatePassword',
-    },
-    {
-      title: '퇴사여부',
-      dataIndex: 'leave',
-      key: 'leave',
+      align: 'center' as 'center'
     },
   ]
 
-  //비밀번호 수정 버튼
-  function handleUpdatePassword(index: number) {
-    console.log(index)
-  }
-
-  // 퇴사버튼 
-  // 리스트에서 삭제를 할것인지
-  // 퇴사, 재직중으로 표시할 것인지
-  function handleLeave(index: number) {
-    setUserLists(userLists => userLists.filter((_,i) => i !== index))
-
-  }
-
   return (
     <>
-      <div>UserList</div>
-      <StyleTable
-        dataSource={tableItemSource}
-        columns={itemColumns}
-        pagination = {{pageSize: 5, simple: true}}
-        size="small"
-      />
-    </>
+      <div>
+        <span>
+          유저 리스트
+        </span>
+        <StyleTable
+          dataSource={tableItemSource}
+          columns={itemColumns}
+          pagination = {{simple: true}}
+          size="small"
+        />
+      </div>
 
+    </>
   )
 }
 
-export default UserList
-
 const StyleTable = styled(Table)`
   margin-top: 30px;
+  margin-left: 50px;
   .ant-table-cell {
     padding-bottom: 10px;
   }
   .userListTable {
     text-align: center;
+  }
+  .ant-table-content {
+    text-align: center;
+
   }
   min-width: 1000px;
 `

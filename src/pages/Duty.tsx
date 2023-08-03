@@ -1,11 +1,9 @@
-import DutyList from "@/components/duty/DutyList"
+import {DutyForm} from "components/duty"
 
-function Duty() {
+export const Duty = () => {
   return (
     <>
-      <DutyList />
+      <DutyForm />
     </>
   )
 }
-
-export default Duty

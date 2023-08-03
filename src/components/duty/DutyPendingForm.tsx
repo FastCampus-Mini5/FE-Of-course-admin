@@ -1,40 +1,38 @@
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import styled from 'styled-components'
-import { vacationPendingApi } from '@/api/api'
-
-interface VacationPendin {
-  username: string,
-  email: string,
-  createdDate: string,
-  startDate: string,
-  endDate: string
+import { DutyPeindingListsApi } from '@/api/api'
+interface DutyPending {
+  username : string
+  email: string
+  createdDate: string
+  dutyDate: string
 }
 
-function VacationPendingList() {
-  const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendin[]>([])
+export const DutyPendingForm = () => {
+  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPending[]>([])
 
-  const vacationPendingList = async () => {
+  const dutyPendingList = async () => {
     try {
-      const { data } = await vacationPendingApi()
-      setVacationPendingLists(data.response)
+      const res = await DutyPeindingListsApi()
+      setDutyPendingLists(res.data.response)
     } catch (error) {
       console.error('error : ' + error)
     }
   }
 
   useEffect(() => {
-    vacationPendingList()
-  }, [])
+    dutyPendingList()
+  },[])
 
-  // table
-  const tableItemSource = vacationPendingLists.map((item, index) => ({
-    key: index,
-    username: item.username,
+  //table
+
+  const tableItemSource = dutyPendingLists.map((item, index) => ({
+    key: index+1,
+    ueername: item.username,
     email: item.email,
     createdDate: item.createdDate,
-    startDate: item.startDate,
-    endDate: item.endDate,
+    dutyDate: item.dutyDate,
     approveButton: (
       <StyleButton>
         <button onClick = {() => handleApprove(index)}>
@@ -44,7 +42,6 @@ function VacationPendingList() {
           거절
         </button>
       </StyleButton>
-
     )
   }))
 
@@ -52,37 +49,38 @@ function VacationPendingList() {
     {
       title: '번호',
       dataIndex: 'key',
-      key: 'key'
+      key: 'key',
+      align: 'center' as 'center'
     },
     {
       title: '성명',
-      dataIndex: 'username',
-      key: 'username'
+      dataIndex: 'ueername',
+      key: 'ueername',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
-      key: 'createdDate'
+      key: 'createdDate',
+      align: 'center' as 'center'
     },
     {
-      title: '시작일',
-      dataIndex: 'startDate',
-      key: 'startDate'
+      title: '당직일',
+      dataIndex: 'dutyDate',
+      key: 'dutyDate',
+      align: 'center' as 'center'
     },
     {
-      title: '종료일',
-      dataIndex: 'endDate',
-      key: 'endDate'
-    },
-    {
-      title: '확인',
+      title: '승인여부',
       dataIndex: 'approveButton',
-      key: 'approveButton'
+      key: 'approveButton',
+      align: 'center' as 'center'
     }
   ]
 
@@ -104,8 +102,6 @@ function VacationPendingList() {
     </>
   )
 }
-
-export default VacationPendingList
 
 const StyleButton = styled.div`
   display: flex;

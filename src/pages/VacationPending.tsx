@@ -1,11 +1,9 @@
-import VacationPendingList from "@/components/vacation/VacationPendingList"
+import {VacationPendingForm} from "@/components/vacation/VacationPendingForm"
 
-function VacationPending() {
+export const VacationPending = () => {
   return (
     <>
-      <VacationPendingList />
+      <VacationPendingForm />
     </>
   )
 }
-
-export default VacationPending

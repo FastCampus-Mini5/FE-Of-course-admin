@@ -3,6 +3,7 @@ import { Table } from 'antd'
 import { userApproveApi } from '@/api/api'
 import styled from 'styled-components'
 import { UserApproveButton } from './UserApproveButton'
+import { AlignType } from 'rc-table/lib/interface';
 
 interface UserApprove {
   username: string
@@ -46,25 +47,25 @@ export const UserApproveForm = () => {
       title: '사원명',
       dataIndex: 'username',
       key: 'username',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '입사일',
       dataIndex: 'hireDate',
       key: 'hireDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '승인여부',
       dataIndex: 'approveButton',
       key: 'approveButton',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     }
 
   ]

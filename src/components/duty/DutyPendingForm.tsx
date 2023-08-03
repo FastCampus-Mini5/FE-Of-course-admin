@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import styled from 'styled-components'
 import { DutyPeindingListsApi } from '@/api/api'
+import { AlignType } from 'rc-table/lib/interface';
+
 interface DutyPending {
   username : string
   email: string
@@ -50,37 +52,37 @@ export const DutyPendingForm = () => {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '성명',
       dataIndex: 'ueername',
       key: 'ueername',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
       key: 'createdDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '당직일',
       dataIndex: 'dutyDate',
       key: 'dutyDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '승인여부',
       dataIndex: 'approveButton',
       key: 'approveButton',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     }
   ]
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import {SelectPeriod} from "./SelectPeriod"
 import { DutyListApi } from '@/api/api'
+import { AlignType } from 'rc-table/lib/interface';
 interface DutyList {
   username: string
   email: string
@@ -39,31 +40,32 @@ export const DutyForm = () => {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
-      align: 'center' as 'center'
+      align: 'center' as AlignType,
+      style: {width: 50}
     },
     {
       title: '성명',
       dataIndex: 'username',
       key: 'username',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
       key: 'createdDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '당직일',
       dataIndex: 'dutyDate',
       key: 'dutyDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
   ]
 

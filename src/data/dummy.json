@@ -117,47 +117,47 @@
         "createdAt": "2023-07-26T15:00:00.000+00:00",
         "startDate": "2023-08-06T15:00:00.000+00:00",
         "endDate": "2023-08-06T15:00:00.000+00:00"
-    },
-    {
+      },
+      {
         "username": "senior",
         "email": "test5@test.com",
         "reason": "병가",
         "createdAt": "2023-07-26T15:00:00.000+00:00",
         "startDate": "2023-07-29T15:00:00.000+00:00",
         "endDate": "2023-07-29T15:00:00.000+00:00"
-    },
-    {
+      },
+      {
         "username": "manager",
         "email": "test4@test.com",
         "reason": "휴가",
         "createdAt": "2023-07-26T15:00:00.000+00:00",
         "startDate": "2023-08-07T15:00:00.000+00:00",
         "endDate": "2023-08-07T15:00:00.000+00:00"
-    },
-    {
+      },
+      { 
         "username": "cto",
         "email": "test3@test.com",
         "reason": "휴가",
         "createdAt": "2023-07-26T15:00:00.000+00:00",
         "startDate": "2023-08-05T15:00:00.000+00:00",
         "endDate": "2023-08-05T15:00:00.000+00:00"
-    },
-    {
+      },
+      {
         "username": "cfo",
         "email": "test2@test.com",
         "reason": "병가",
         "createdAt": "2023-07-26T15:00:00.000+00:00",
         "startDate": "2023-07-31T15:00:00.000+00:00",
         "endDate": "2023-07-31T15:00:00.000+00:00"
-    },
-    {
+      },
+      {
         "username": "ceo",
         "email": "test1@test.com",
         "reason": "휴가",
         "createdAt": "2023-07-26T15:00:00.000+00:00",
         "startDate": "2023-07-26T15:00:00.000+00:00",
         "endDate": "2023-07-26T15:00:00.000+00:00"
-    }
+      }
     ],
     "error": null
   },
@@ -168,17 +168,137 @@
       {
         "username": "홍길동",
         "email": "test@test.com",
-        "createdDate": "2023-07-26T07:39:38.021+00:00",
-        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+        "createdDate": "2023-01-26T07:39:38.021+00:00",
+        "dutyDate": "2023-01-26T07:39:38.021+00:00"
       },
       {
         "username": "청길은",
         "email": "test@test2.com",
+        "createdDate": "2023-02-26T07:39:38.021+00:00",
+        "dutyDate": "2023-02-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "녹길금",
+        "email": "test@test3.com",
+        "createdDate": "2023-02-26T07:39:38.021+00:00",
+        "dutyDate": "2023-02-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test1",
+        "email": "test@test3.com",
+        "createdDate": "2023-01-10T07:39:38.021+00:00",
+        "dutyDate": "2023-01-10T07:39:38.021+00:00"
+      },
+      {
+        "username": "test1",
+        "email": "test@test3.com",
+        "createdDate": "2023-01-20T07:39:38.021+00:00",
+        "dutyDate": "2023-01-20T07:39:38.021+00:00"
+      },
+      {
+        "username": "test1",
+        "email": "test@test3.com",
+        "createdDate": "2023-02-08T07:39:38.021+00:00",
+        "dutyDate": "2023-02-08T07:39:38.021+00:00"
+      },
+      {
+        "username": "test1",
+        "email": "test@test3.com",
+        "createdDate": "2023-02-10T07:39:38.021+00:00",
+        "dutyDate": "2023-02-10T07:39:38.021+00:00"
+      },
+      {
+        "username": "test1",
+        "email": "test@test3.com",
+        "createdDate": "2023-02-12T07:39:38.021+00:00",
+        "dutyDate": "2023-02-12T07:39:38.021+00:00"
+      },
+      {
+        "username": "test2",
+        "email": "test@test3.com",
+        "createdDate": "2023-05-26T07:39:38.021+00:00",
+        "dutyDate": "2023-05-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test2",
+        "email": "test@test3.com",
         "createdDate": "2023-07-26T07:39:38.021+00:00",
         "dutyDate": "2023-07-26T07:39:38.021+00:00"
       },
       {
-        "username": "녹길금",
+        "username": "test2",
+        "email": "test@test3.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test2",
+        "email": "test@test3.com",
+        "createdDate": "2023-06-26T07:39:38.021+00:00",
+        "dutyDate": "2023-06-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test2",
+        "email": "test@test3.com",
+        "createdDate": "2023-07-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-04-26T07:39:38.021+00:00",
+        "dutyDate": "2023-04-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-06-26T07:39:38.021+00:00",
+        "dutyDate": "2023-07-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-06-26T07:39:38.021+00:00",
+        "dutyDate": "2023-06-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-05-26T07:39:38.021+00:00",
+        "dutyDate": "2023-05-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-04-26T07:39:38.021+00:00",
+        "dutyDate": "2023-04-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-04-26T07:39:38.021+00:00",
+        "dutyDate": "2023-04-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-06-26T07:39:38.021+00:00",
+        "dutyDate": "2023-06-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-05-26T07:39:38.021+00:00",
+        "dutyDate": "2023-05-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
+        "email": "test@test3.com",
+        "createdDate": "2023-06-26T07:39:38.021+00:00",
+        "dutyDate": "2023-06-26T07:39:38.021+00:00"
+      },
+      {
+        "username": "test3",
         "email": "test@test3.com",
         "createdDate": "2023-07-26T07:39:38.021+00:00",
         "dutyDate": "2023-07-26T07:39:38.021+00:00"

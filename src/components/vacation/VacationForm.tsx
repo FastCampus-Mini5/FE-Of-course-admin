@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import { vacationApi } from '@/api/api';
-
+import { AlignType } from 'rc-table/lib/interface';
 interface Annual {
   username: string;
   email: string;
@@ -43,43 +43,43 @@ export const VacationForm = () => {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '성명',
       dataIndex: 'username',
       key: 'username',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '사유',
       dataIndex: 'reason',
       key: 'reason',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '신청일',
       dataIndex: 'createAt',
       key: 'createAt',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '시작일',
       dataIndex: 'startDate',
       key: 'startDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '종료일',
       dataIndex: 'endDate',
       key: 'endDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
   ]
 

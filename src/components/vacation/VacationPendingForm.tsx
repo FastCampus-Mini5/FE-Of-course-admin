@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import styled from 'styled-components'
 import { vacationPendingApi } from '@/api/api'
+import { AlignType } from 'rc-table/lib/interface';
 
 interface VacationPendin {
   username: string,
@@ -52,37 +53,44 @@ export const VacationPendingForm = () => {
     {
       title: '번호',
       dataIndex: 'key',
-      key: 'key'
+      key: 'key',
+      align: 'center' as AlignType,
     },
     {
       title: '성명',
       dataIndex: 'username',
-      key: 'username'
+      key: 'username',
+      align: 'center' as AlignType,
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as AlignType,
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
-      key: 'createdDate'
+      key: 'createdDate',
+      align: 'center' as AlignType,
     },
     {
       title: '시작일',
       dataIndex: 'startDate',
-      key: 'startDate'
+      key: 'startDate',
+      align: 'center' as AlignType,
     },
     {
       title: '종료일',
       dataIndex: 'endDate',
-      key: 'endDate'
+      key: 'endDate',
+      align: 'center' as AlignType,
     },
     {
       title: '확인',
       dataIndex: 'approveButton',
-      key: 'approveButton'
+      key: 'approveButton',
+      align: 'center' as AlignType,
     }
   ]
 

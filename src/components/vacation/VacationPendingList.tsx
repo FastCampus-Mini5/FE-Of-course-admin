@@ -1,7 +1,7 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import styled from 'styled-components'
+import { vacationPendingApi } from '@/api/api'
 
 interface VacationPendin {
   username: string,
@@ -11,12 +11,12 @@ interface VacationPendin {
   endDate: string
 }
 
-function Vacationpending() {
+function VacationPendingList() {
   const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendin[]>([])
 
-  const vacationPendingListsApi = async () => {
+  const vacationPendingList = async () => {
     try {
-      const { data } = await axios.get('http://localhost:8001/api/admin/vacation/pending')
+      const { data } = await vacationPendingApi()
       setVacationPendingLists(data.response)
     } catch (error) {
       console.error('error : ' + error)
@@ -24,7 +24,7 @@ function Vacationpending() {
   }
 
   useEffect(() => {
-    vacationPendingListsApi()
+    vacationPendingList()
   }, [])
 
   // table
@@ -105,7 +105,7 @@ function Vacationpending() {
   )
 }
 
-export default Vacationpending
+export default VacationPendingList
 
 const StyleButton = styled.div`
   display: flex;

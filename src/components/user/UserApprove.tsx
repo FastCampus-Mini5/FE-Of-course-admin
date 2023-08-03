@@ -1,6 +1,7 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
+import { userApproveApi } from '@/api/api'
+
 interface UserApprove {
   username: string
   email: string
@@ -10,25 +11,28 @@ interface UserApprove {
 
 
 function UserApprove() {
-  const [userApproveItems, setUserApproveItems] = useState<UserApprove[]>([])
+  const [userApproveLists, setUserApproveLists] = useState<UserApprove[]>([])
 
-  const userApproveApi = async () => {
+  const userApprove = async () => {
     try {
-      const { data } = await axios.get('http://localhost:8001/api/admin/signup/list')
-      setUserApproveItems(data.response)
+      const res = await userApproveApi()
+      if(res) [
+        setUserApproveLists(res.data.response)
+      ]
+
     } catch (error) {
       console.error('error : ' + error)
     }
   }
 
   useEffect(() => {
-    userApproveApi()
+    userApprove()
   }, [])
 
-  console.log(userApproveItems)
+  console.log(userApproveLists)
 
   // table
-  const tableItemSources = userApproveItems.map((item, index) => ({
+  const tableItemSources = userApproveLists.map((item, index) => ({
     key: index,
     username: item.username,
     email: item.email,

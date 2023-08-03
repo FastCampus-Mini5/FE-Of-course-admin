@@ -1,8 +1,7 @@
-import axios from 'axios'
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import styled from 'styled-components'
-
+import { DutyPeindingListsApi } from '@/api/api'
 interface DutyPending {
   username : string
   email: string
@@ -13,17 +12,17 @@ interface DutyPending {
 function DutyPending() {
   const [dutyPendingLists, setDutyPendingLists] = useState<DutyPending[]>([])
 
-  const dutyPendingListsApi = async () => {
+  const dutyPendingList = async () => {
     try {
-      const { data } = await axios.get('http://localhost:8001/api/admin/duty/pending')
-      setDutyPendingLists(data.response)
+      const res = await DutyPeindingListsApi()
+      setDutyPendingLists(res.data.response)
     } catch (error) {
       console.error('error : ' + error)
     }
   }
 
   useEffect(() => {
-    dutyPendingListsApi()
+    dutyPendingList()
   },[])
 
   //table

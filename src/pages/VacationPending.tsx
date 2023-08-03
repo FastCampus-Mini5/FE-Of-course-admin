@@ -1,9 +1,9 @@
-import Vacationpending from "@/components/vacation/Vacationpending"
+import VacationPendingList from "@/components/vacation/VacationPendingList"
 
 function VacationPending() {
   return (
     <>
-      <Vacationpending />
+      <VacationPendingList />
     </>
   )
 }

@@ -2,16 +2,30 @@ import {NavLink, Outlet} from 'react-router-dom'
 import Styled  from 'styled-components'
 
 function Nav() {
+  const links = [
+    { path: '/', text: '홈'},
+    { path: '/user', text: '유저 리스트'},
+    { path: '/vacationpending', text: '연차 요청 리스트'},
+    { path: '/vacation', text: '연차 리스트'},
+    { path: '/dutypending', text: '당직 요청 리스트'},
+    { path: '/duty', text: '당직 리스트'},
+  ]
+
+  const searchLinks = links.map((link, index) => (
+    <StyledNavitem 
+      key = {index}
+      to = {link.path}
+    >
+      {link.text}
+    </StyledNavitem>
+  ))
+
+
   return (
     <>
       <StyledDiv>
         <StyledNavContainer>
-          <StyledNavitem to = '/' > 홈 </StyledNavitem>
-          <StyledNavitem to = '/user' >  유저 리스트</StyledNavitem>
-          <StyledNavitem to = '/vacationpending'>연차 요청 리스트</StyledNavitem>
-          <StyledNavitem to = '/vacation'> 연차 리스트</StyledNavitem>
-          <StyledNavitem to = '/dutypending'> 당직 요청 리스트</StyledNavitem>
-          <StyledNavitem to = '/duty'> 당직 리스트</StyledNavitem>
+          {searchLinks}
         </StyledNavContainer>
         <div>
           <Outlet/>
@@ -29,7 +43,7 @@ const StyledDiv = Styled.div`
 `
 
 const StyledNavContainer = Styled.div`
-  width: 200px;
+  min-width: 200px;
   height: 100vh;
   background-color: #66ffff;
   justify-content: center;

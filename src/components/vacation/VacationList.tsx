@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios';
 import { Table } from 'antd'
+import { vacationApi } from '@/api/api';
 
 interface Annual {
   username: string;
@@ -12,23 +12,23 @@ interface Annual {
 }
 
 function VacationList() {
-  const [annualLists, setAnnualLists] = useState<Annual[]>([])
+  const [vacationLists, setVacationLists] = useState<Annual[]>([])
 
-  const annualListApi = async () =>{
+  const vacationList = async () =>{
     try{
-      const { data } = await axios.get('http://localhost:8001/api/admin/vacation/approve/list')
-      setAnnualLists(data.response)
+      const res = await vacationApi()
+      setVacationLists(res.data.response)
     } catch(error) {
       console.error('error :' + error)
     }
   }
 
   useEffect(() => {
-    annualListApi()
+    vacationList()
   }, [])
 
   // table
-  const tableItemSource = annualLists.map((item, index) => ({
+  const tableItemSource = vacationLists.map((item, index) => ({
     key: index+1,
     username: item.username,
     email: item.email,

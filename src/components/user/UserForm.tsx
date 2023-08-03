@@ -102,12 +102,5 @@ const StyleTable = styled(Table)`
   .ant-table-cell {
     padding-bottom: 10px;
   }
-  .userListTable {
-    text-align: center;
-  }
-  .ant-table-content {
-    text-align: center;
-
-  }
   min-width: 1000px;
 `

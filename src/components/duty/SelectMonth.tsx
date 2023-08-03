@@ -1,13 +1,17 @@
+interface SelectMonthProps {
+  selectedMonth: string
+  onMonthChange: (month: string) => void
+}
 
-
-export const SelectPeriod = () => {
-  const handleChange = (e) => {
-    console.log(e.target.value)
+export const SelectMonth:React.FC<SelectMonthProps> = ({selectedMonth, onMonthChange}) => {
+  const handleChange = (event) => {
+    const newSelectedMonth = event.target.value
+    onMonthChange(newSelectedMonth)
   }
   
   return (
     <>
-      <select onChange = {handleChange}>
+      <select value = {selectedMonth} onChange = {handleChange}>
         <option value = '01'>
           1월
         </option>

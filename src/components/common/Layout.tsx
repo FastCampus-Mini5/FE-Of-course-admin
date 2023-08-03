@@ -1,10 +1,9 @@
 import {NavLink, Outlet} from 'react-router-dom'
-import Styled  from 'styled-components'
+import styled  from 'styled-components'
 
-function Nav() {
+function Layout() {
   const links = [
-    { path: '/', text: '홈'},
-    { path: '/user', text: '유저 리스트'},
+    { path: '/', text: '유저 리스트'},
     { path: '/vacationpending', text: '연차 요청 리스트'},
     { path: '/vacation', text: '연차 리스트'},
     { path: '/dutypending', text: '당직 요청 리스트'},
@@ -36,13 +35,14 @@ function Nav() {
   )
 }
 
-export default Nav
+export default Layout
 
-const StyledDiv = Styled.div`
+const StyledDiv = styled.div`
+  position: fix;
   display: flex;
 `
 
-const StyledNavContainer = Styled.div`
+const StyledNavContainer = styled.div`
   min-width: 200px;
   height: 100vh;
   background-color: #66ffff;
@@ -50,9 +50,10 @@ const StyledNavContainer = Styled.div`
   text-align: center;
 `
 
-const StyledNavitem = Styled(NavLink)`
+const StyledNavitem = styled(NavLink)`
   display: block;
   font-size: 20px;
+  margin-top: 50px;
   margin-bottom: 40px;
 `
 

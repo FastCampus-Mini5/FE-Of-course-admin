@@ -6,7 +6,6 @@ import UserList from "@/components/user/UserList"
 function User() {
   return (
     <StyledUserSection>
-      <div>User</div>
       <UserApprove/>
       <UserList/>
     </StyledUserSection>
@@ -16,6 +15,6 @@ function User() {
 export default User
 
 const StyledUserSection = Styled.section`
-  // text-align: center;
-  // font-size: 30px;
+  text-align: center;
+  font-size: 30px;
 `

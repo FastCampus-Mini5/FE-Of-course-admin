@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { App,ErrorComponent } from 'components/index'
+import { ErrorComponent } from 'components/index'
+import  Layout  from '../components/common/Layout'
 import SignIn from './SignIn'
 import Vacation from './Vacation'
 import VacationPending from './VacationPending'
@@ -9,11 +10,11 @@ import DutyPending from './DutyPending'
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Layout />,
     errorElement: <ErrorComponent />,
     children: [
       {
-        path: '/user',
+        path: '/',
         element: <User />,
         errorElement: <ErrorComponent />,
         children: []

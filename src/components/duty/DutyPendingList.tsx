@@ -49,32 +49,38 @@ function DutyPending() {
     {
       title: '번호',
       dataIndex: 'key',
-      key: 'key'
+      key: 'key',
+      align: 'center' as 'center'
     },
     {
       title: '성명',
       dataIndex: 'ueername',
-      key: 'ueername'
+      key: 'ueername',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
-      key: 'createdDate'
+      key: 'createdDate',
+      align: 'center' as 'center'
     },
     {
       title: '당직일',
       dataIndex: 'dutyDate',
-      key: 'dutyDate'
+      key: 'dutyDate',
+      align: 'center' as 'center'
     },
     {
       title: '승인여부',
       dataIndex: 'approveButton',
-      key: 'approveButton'
+      key: 'approveButton',
+      align: 'center' as 'center'
     }
   ]
 

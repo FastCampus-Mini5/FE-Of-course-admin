@@ -43,31 +43,37 @@ function UserList() {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
+      align: 'center' as 'center'
     },
     {
       title: '사원명',
       dataIndex: 'username',
       key: 'username',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '입사일',
       dataIndex: 'hireDate',
       key: 'hireDate',
+      align: 'center' as 'center'
     },
     {
       title: '전체연차',
       dataIndex: '',
       key: '',
+      align: 'center' as 'center'
     },
     {
       title: '잔여연차',
       dataIndex: 'remainVacation',
       key: 'remainVacation',
+      align: 'center' as 'center'
     },
   ]
 

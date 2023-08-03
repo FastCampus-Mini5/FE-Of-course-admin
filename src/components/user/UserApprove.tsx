@@ -45,22 +45,26 @@ function UserApprove() {
     {
       title: '사원명',
       dataIndex: 'username',
-      key: 'username'
+      key: 'username',
+      align: 'center' as 'center'
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as 'center'
     },
     {
       title: '입사일',
       dataIndex: 'hireDate',
-      key: 'hireDate'
+      key: 'hireDate',
+      align: 'center' as 'center'
     },
     {
       title: '승인여부',
       dataIndex: 'approveButton',
-      key: 'approveButton'
+      key: 'approveButton',
+      align: 'center' as 'center'
     }
 
   ]

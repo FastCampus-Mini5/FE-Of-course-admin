@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import { userApproveApi } from '@/api/api'
 import styled from 'styled-components'
-import UserApproveButton from './UserApproveButton'
+import { UserApproveButton } from './UserApproveButton'
 
 interface UserApprove {
   username: string
@@ -12,7 +12,7 @@ interface UserApprove {
 
 
 
-function UserApprove() {
+export const UserApproveForm = () => {
   const [userApproveLists, setUserApproveLists] = useState<UserApprove[]>([])
 
   const userApprove = async () => {
@@ -85,8 +85,6 @@ function UserApprove() {
     </>
   )
 }
-
-export default UserApprove
 
 const StyledTable = styled(Table)`
   max-width: 800px;

@@ -10,7 +10,7 @@ interface User {
   reaminVacation: number
 }
 
-function UserList() {
+export const UserForm = () => {
   const [userLists, setUserLists] = useState<User[]>([])
 
   const userList = async () => {
@@ -94,8 +94,6 @@ function UserList() {
     </>
   )
 }
-
-export default UserList
 
 const StyleTable = styled(Table)`
   margin-top: 30px;

@@ -9,7 +9,7 @@ interface DutyPending {
   dutyDate: string
 }
 
-function DutyPending() {
+export const DutyPendingForm = () => {
   const [dutyPendingLists, setDutyPendingLists] = useState<DutyPending[]>([])
 
   const dutyPendingList = async () => {
@@ -102,8 +102,6 @@ function DutyPending() {
     </>
   )
 }
-
-export default DutyPending
 
 const StyleButton = styled.div`
   display: flex;

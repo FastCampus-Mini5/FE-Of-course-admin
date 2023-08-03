@@ -1,4 +1,4 @@
-function UserApproveButton( {email} ) {
+export const UserApproveButton = ( {email} ) => {
 
   function handleClick() {
     console.log(email)
@@ -8,5 +8,3 @@ function UserApproveButton( {email} ) {
     <button onClick = {() => handleClick()}>승인</button>
   )
 }
-
-export default UserApproveButton

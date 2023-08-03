@@ -1,7 +1,7 @@
 import {NavLink, Outlet} from 'react-router-dom'
 import styled  from 'styled-components'
 
-function Layout() {
+export const Layout = () => {
   const links = [
     { path: '/', text: '유저 리스트'},
     { path: '/vacationpending', text: '연차 요청 리스트'},
@@ -34,8 +34,6 @@ function Layout() {
 
   )
 }
-
-export default Layout
 
 const StyledDiv = styled.div`
   position: fix;

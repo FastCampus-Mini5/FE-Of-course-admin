@@ -1,18 +1,16 @@
 import Styled  from 'styled-components'
-import UserApprove from "@/components/user/UserApprove"
-import UserList from "@/components/user/UserList"
+import {UserApproveForm} from "@/components/user/UserApproveForm"
+import {UserForm} from "@/components/user/UserForm"
 
 
-function User() {
+export const User = () => {
   return (
     <StyledUserSection>
-      <UserApprove/>
-      <UserList/>
+      <UserApproveForm/>
+      <UserForm/>
     </StyledUserSection>
   )
 }
-
-export default User
 
 const StyledUserSection = Styled.section`
   text-align: center;

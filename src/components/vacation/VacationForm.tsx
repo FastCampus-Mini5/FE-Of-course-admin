@@ -11,7 +11,7 @@ interface Annual {
   endDate: string
 }
 
-function VacationList() {
+export const VacationForm = () => {
   const [vacationLists, setVacationLists] = useState<Annual[]>([])
 
   const vacationList = async () =>{
@@ -93,5 +93,3 @@ function VacationList() {
     </>
   )
 }
-
-export default VacationList

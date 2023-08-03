@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
-import SelectPeriod from "./SelectPeriod"
+import {SelectPeriod} from "./SelectPeriod"
 import { DutyListApi } from '@/api/api'
 interface DutyList {
   username: string
@@ -9,7 +9,7 @@ interface DutyList {
   dutyDate: string
 }
 
-function DutyList() {
+export const DutyForm = () => {
   const [dutyLists, setDutyLists] = useState<DutyList[]>([])
 
   const DutyList = async() => {
@@ -78,5 +78,3 @@ function DutyList() {
     </>
   )
 }
-
-export default DutyList

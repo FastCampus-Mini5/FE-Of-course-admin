@@ -11,7 +11,7 @@ interface VacationPendin {
   endDate: string
 }
 
-function VacationPendingList() {
+export const VacationPendingForm = () => {
   const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendin[]>([])
 
   const vacationPendingList = async () => {
@@ -104,8 +104,6 @@ function VacationPendingList() {
     </>
   )
 }
-
-export default VacationPendingList
 
 const StyleButton = styled.div`
   display: flex;

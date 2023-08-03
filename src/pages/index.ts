@@ -1,2 +1,7 @@
 export * from 'pages/Router'
 export * from 'pages/Duty'
+export * from 'pages/DutyPending'
+export * from 'pages/SignIn'
+export * from 'pages/User'
+export * from 'pages/Vacation'
+export * from 'pages/VacationPending'

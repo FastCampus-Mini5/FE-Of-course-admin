@@ -1,13 +1,22 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { ErrorComponent } from 'components/index'
-import  Layout  from '../components/common/Layout'
-import SignIn from './SignIn'
-import Vacation from './Vacation'
-import VacationPending from './VacationPending'
-import User from './User'
-import Duty from './Duty'
-import DutyPending from './DutyPending'
+import {Layout} from 'components/common/index'
+import { 
+  Duty, 
+  DutyPending, 
+  SignIn, 
+  User, 
+  Vacation, 
+  VacationPending 
+} from 'pages/index'
+
 export const router = createBrowserRouter([
+  {
+    path: '/signin',
+    element: <SignIn />,
+    errorElement: <ErrorComponent />,
+    children: []
+  },
   {
     path: '/',
     element: <Layout />,
@@ -44,11 +53,5 @@ export const router = createBrowserRouter([
         children: []
       }
     ]
-  },
-  {
-    path: '/signin',
-    element: <SignIn />,
-    errorElement: <ErrorComponent />,
-    children: []
   }
 ])

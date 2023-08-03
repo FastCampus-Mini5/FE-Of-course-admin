@@ -1,6 +1,6 @@
 
 
-function SelectPeriod() {
+export const SelectPeriod = () => {
   const handleChange = (e) => {
     console.log(e.target.value)
   }
@@ -48,5 +48,3 @@ function SelectPeriod() {
     </>
   )
 }
-
-export default SelectPeriod

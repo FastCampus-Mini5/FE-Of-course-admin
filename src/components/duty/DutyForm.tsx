@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Table } from 'antd'
-import { SelectMonth, SelectYear } from "./index"
+import { SelectMonth, SelectYear } from "components/common/index"
 import { DutyListApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface';
 import { styled } from 'styled-components'

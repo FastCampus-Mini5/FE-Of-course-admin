@@ -1,5 +1,5 @@
 export * from 'components/ErrorComponent'
-export * from 'components/common'
+export * from '@/components/common'
 export * from 'components/duty'
 export * from 'components/signin'
 export * from 'components/user'

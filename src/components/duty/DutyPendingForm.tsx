@@ -96,17 +96,31 @@ export const DutyPendingForm = () => {
   }
 
   return (
-    <>
-      <Table
+    <StyledSection>
+      <span>당직 요청 리스트</span>
+      <StyledTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </>
+    </StyledSection>
   )
 }
+const StyledSection = styled.section`
+  font-size: 30px;
+  text-align: center;
+  margin-top: 40px;
+`
+
 
 const StyleButton = styled.div`
   display: flex;
   gap: 10px;
   width: 100px;
+`
+
+const StyledTable = styled(Table)`
+  min-width: 800px;
+  max-width: 800px;
+  margin-left: 50px;
+  margin-top: 30px;
 `

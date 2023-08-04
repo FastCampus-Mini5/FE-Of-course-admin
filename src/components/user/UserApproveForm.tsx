@@ -71,26 +71,29 @@ export const UserApproveForm = () => {
   ]
 
   return (
-    <>
-      <div>
-        <span>
-          승인요청
-        </span>
-        <StyledTable
-          dataSource={tableItemSources}
-          columns={tableColumns}
-          pagination = {{pageSize: 5, simple: true}}
-          size='large'
-        />
-      </div>
-    </>
+    <StyledSection>
+      <span>
+        승인요청
+      </span>
+      <StyledTable
+        dataSource={tableItemSources}
+        columns={tableColumns}
+        pagination = {{pageSize: 5, simple: true}}
+        size='large'
+      />
+    </StyledSection>
   )
 }
 
+const StyledSection = styled.section`
+  margin-top: 40px;
+  text-align: center;
+  font-size: 30px;
+`
+
 const StyledTable = styled(Table)`
+  min-width: 800px;
   max-width: 800px;
   margin-left: 50px;
-  .ant-table-wrapper {
-    width: 100%
-  }
+  margin-top: 30px;
 `

@@ -100,7 +100,8 @@ export const VacationForm = () => {
       title: '성명',
       dataIndex: 'username',
       key: 'username',
-      align: 'center' as AlignType
+      align: 'center' as AlignType,
+      width: '100'
     },
     {
       title: '아이디',
@@ -136,7 +137,8 @@ export const VacationForm = () => {
 
 
   return (
-    <>
+    <StyledSection>
+      <span>연차 리스트</span>
       <StyledSelectContainer>
         <StyledAllSearchButton onClick = {handleAllSearch}>전체</StyledAllSearchButton>
         <input 
@@ -154,13 +156,19 @@ export const VacationForm = () => {
           <button onClick = {handleSearch}>검색</button>
         </StyledSearchButtonContainer>
       </StyledSelectContainer>
-      <Table
+      <StyledTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </>
+    </StyledSection>
   )
 }
+
+const StyledSection = styled.section`
+  font-size: 30px;
+  text-align: center;
+  margin-top: 40px;
+`
 
 const StyledSelectContainer = styled.div`
   display: flex;
@@ -174,4 +182,11 @@ const StyledAllSearchButton = styled.button`
 
 const StyledSearchButtonContainer = styled.div`
   margin-left: auto
+`
+
+const StyledTable = styled(Table)`
+  min-width: 800px;
+  max-width: 800px;
+  margin-left: 50px;
+  margin-top: 30px;
 `

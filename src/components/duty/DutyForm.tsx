@@ -144,7 +144,7 @@ export const DutyForm = () => {
           <button onClick = {handleSearch}>검색</button>
         </StyledSearchButtonContainer>
       </StyledSelectContainer>
-      <Table
+      <StyledTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
@@ -152,9 +152,11 @@ export const DutyForm = () => {
   )
 }
 
+
 const StyledUserSection = styled.section`
   text-align: center;
   font-size: 30px;
+  margin-top: 40px;
 `
 
 const StyledSelectContainer = styled.div`
@@ -169,4 +171,11 @@ const StyledAllSearchButton = styled.button`
 
 const StyledSearchButtonContainer = styled.div`
   margin-left: auto
+`
+
+const StyledTable = styled(Table)`
+  min-width: 800px;
+  max-width: 800px;
+  margin-left: 50px;
+  margin-top: 30px;
 `

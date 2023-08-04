@@ -1,7 +1,10 @@
-import {NavLink, Outlet} from 'react-router-dom'
+import {NavLink, Outlet, useNavigate } from 'react-router-dom'
 import styled  from 'styled-components'
+import logo from '../../assets/service-title.png'
 
 export const Layout = () => {
+  const navigate = useNavigate()
+
   const links = [
     { path: '/', text: '유저 리스트'},
     { path: '/vacationpending', text: '연차 요청 리스트'},
@@ -23,7 +26,12 @@ export const Layout = () => {
   return (
     <>
       <StyledDiv>
+
         <StyledNavContainer>
+          <StyledImg 
+            src = {logo}
+            onClick = {() => navigate('/')}
+          />
           {searchLinks}
         </StyledNavContainer>
         <div>
@@ -55,3 +63,7 @@ const StyledNavitem = styled(NavLink)`
   margin-bottom: 40px;
 `
 
+const StyledImg = styled.img`
+  width : 200px;
+  cursor: pointer;
+`

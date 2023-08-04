@@ -30,21 +30,21 @@ export const VacationPendingForm = () => {
 
   // table
   const tableItemSource = vacationPendingLists.map((item, index) => ({
-    key: index,
+    key: index+1,
     username: item.username,
     email: item.email,
     createdDate: item.createdDate,
     startDate: item.startDate,
     endDate: item.endDate,
     approveButton: (
-      <StyleButton>
+      <StyledButton>
         <button onClick = {() => handleApprove(index)}>
           승인
         </button>
         <button onClick = {() => handleReject(index)}>
           거절
         </button>
-      </StyleButton>
+      </StyledButton>
 
     )
   }))
@@ -61,6 +61,7 @@ export const VacationPendingForm = () => {
       dataIndex: 'username',
       key: 'username',
       align: 'center' as AlignType,
+      width: 150
     },
     {
       title: '아이디',
@@ -104,17 +105,29 @@ export const VacationPendingForm = () => {
   }
 
   return (
-    <>
-      <Table
+    <StyledSection>
+      <span>연차 요청 리스트</span>
+      <StyledTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </>
+    </StyledSection>
   )
 }
 
-const StyleButton = styled.div`
+const StyledSection = styled.section`
+  font-size: 30px;
+  text-align: center;
+  margin-top: 40px;
+`
+
+const StyledButton = styled.div`
   display: flex;
   gap: 10px;
   width: 100px;
+`
+
+const StyledTable = styled(Table)`
+  margin-left: 50px;
+  margin-top: 30px;
 `

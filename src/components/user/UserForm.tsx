@@ -80,27 +80,28 @@ export const UserForm = () => {
 
   return (
     <>
-      <div>
-        <span>
+      <Styledspan>
           유저 리스트
-        </span>
-        <StyleTable
-          dataSource={tableItemSource}
-          columns={itemColumns}
-          pagination = {{simple: true}}
-          size="small"
-        />
-      </div>
-
+      </Styledspan>
+      <StyledTable
+        dataSource={tableItemSource}
+        columns={itemColumns}
+        pagination = {{simple: true}}
+        size="small"
+      />
     </>
   )
 }
+const Styledspan = styled.div`
+  text-align: center;
+  font-size: 30px;
+  margin-top: 40px;
+`
 
-const StyleTable = styled(Table)`
-  margin-top: 30px;
+
+const StyledTable = styled(Table)`
+  min-width: 800px;
+  max-width: 800px;
   margin-left: 50px;
-  .ant-table-cell {
-    padding-bottom: 10px;
-  }
-  min-width: 1000px;
+  margin-top: 30px;
 `

@@ -1,3 +1,5 @@
+import { StyledSelect } from "styles/index"
+
 interface SelectYearProps {
   selectedYear : number,
   onYearChange : (year) => void
@@ -20,13 +22,13 @@ export const SelectYear: React.FC<SelectYearProps> = ({selectedYear, onYearChang
   
   return (
     <>
-      <select value = {selectedYear} onChange = {handleChange}>
+      <StyledSelect value = {selectedYear} onChange = {handleChange}>
         {yearOptions.map(year => (
           <option key={year} value = {year}>
             {year}년
           </option>
         ))}
-      </select>
+      </StyledSelect>
     </>
   )
 }

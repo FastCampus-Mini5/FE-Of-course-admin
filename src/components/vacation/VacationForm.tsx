@@ -4,6 +4,7 @@ import { vacationApi } from '@/api/api';
 import { AlignType } from 'rc-table/lib/interface';
 import  styled from 'styled-components/';
 import { SelectMonth, SelectYear } from 'components/common/index'
+import { StyledSection } from 'styles/index'
 interface Vacation {
   username: string;
   email: string;
@@ -141,7 +142,7 @@ export const VacationForm = () => {
       <span>연차 리스트</span>
       <StyledSelectContainer>
         <StyledAllSearchButton onClick = {handleAllSearch}>전체</StyledAllSearchButton>
-        <input 
+        <StyledInput 
           value = {searchValue}
           onChange = {e => setSearchValue(e.target.value)}
           placeholder='성명' 
@@ -153,7 +154,7 @@ export const VacationForm = () => {
         <StyledSearchButtonContainer>
           <SelectYear selectedYear = {selectedYear} onYearChange = {handleYearChange}/>
           <SelectMonth selectedMonth = {selectedMonth} onMonthChange = {handleMonthChange}/>
-          <button onClick = {handleSearch}>검색</button>
+          <StyledButton onClick = {handleSearch}>검색</StyledButton>
         </StyledSearchButtonContainer>
       </StyledSelectContainer>
       <StyledTable
@@ -164,29 +165,35 @@ export const VacationForm = () => {
   )
 }
 
-const StyledSection = styled.section`
-  font-size: 30px;
-  text-align: center;
-  margin-top: 40px;
-`
 
 const StyledSelectContainer = styled.div`
   display: flex;
+  gap: 10px;
   margin: 30px; auto;
-
+  justify-content: space-between;
 `
 
-const StyledAllSearchButton = styled.button`
 
+const StyledAllSearchButton = styled.button`
+  margin-left: 40px;
+  width: 100px;
 `
 
 const StyledSearchButtonContainer = styled.div`
-  margin-left: auto
+
+`
+
+const StyledButton = styled.button`
+  height: 35px;
+  width: 70px;
 `
 
 const StyledTable = styled(Table)`
-  min-width: 800px;
-  max-width: 800px;
   margin-left: 50px;
   margin-top: 30px;
+`
+
+const StyledInput = styled.input`
+  width: 200px;
+  heigh: 35px;
 `

@@ -109,6 +109,8 @@ const StyledSection = styled.section`
   font-size: 30px;
   text-align: center;
   margin-top: 40px;
+  min-width: 1200px;
+  max-width: 1200px;
 `
 
 
@@ -119,8 +121,6 @@ const StyleButton = styled.div`
 `
 
 const StyledTable = styled(Table)`
-  min-width: 800px;
-  max-width: 800px;
   margin-left: 50px;
   margin-top: 30px;
 `

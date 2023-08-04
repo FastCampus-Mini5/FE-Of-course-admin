@@ -1,3 +1,5 @@
+import { StyledSelect } from 'styles/index'
+
 interface SelectMonthProps {
   selectedMonth: string
   onMonthChange: (month: string) => void
@@ -9,9 +11,10 @@ export const SelectMonth:React.FC<SelectMonthProps> = ({selectedMonth, onMonthCh
     onMonthChange(newSelectedMonth)
   }
   
+
   return (
     <>
-      <select value = {selectedMonth} onChange = {handleChange}>
+      <StyledSelect value = {selectedMonth} onChange = {handleChange}>
         <option value = '01'>
           1월
         </option>
@@ -48,7 +51,7 @@ export const SelectMonth:React.FC<SelectMonthProps> = ({selectedMonth, onMonthCh
         <option value = '12'>
           12월
         </option>
-      </select>
+      </StyledSelect>
     </>
   )
 }

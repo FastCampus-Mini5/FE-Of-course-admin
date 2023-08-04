@@ -61,7 +61,7 @@ export const VacationPendingForm = () => {
       dataIndex: 'username',
       key: 'username',
       align: 'center' as AlignType,
-      width: 150
+      width: 100
     },
     {
       title: '아이디',
@@ -119,6 +119,8 @@ const StyledSection = styled.section`
   font-size: 30px;
   text-align: center;
   margin-top: 40px;
+  min-width: 1200px;
+  max-width: 1200px;
 `
 
 const StyledButton = styled.div`

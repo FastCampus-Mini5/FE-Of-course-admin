@@ -157,6 +157,8 @@ const StyledUserSection = styled.section`
   text-align: center;
   font-size: 30px;
   margin-top: 40px;
+  min-width: 1200px;
+  max-width: 1200px;
 `
 
 const StyledSelectContainer = styled.div`
@@ -174,8 +176,6 @@ const StyledSearchButtonContainer = styled.div`
 `
 
 const StyledTable = styled(Table)`
-  min-width: 800px;
-  max-width: 800px;
   margin-left: 50px;
   margin-top: 30px;
 `

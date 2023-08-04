@@ -61,6 +61,7 @@ const StyledNavitem = styled(NavLink)`
   font-size: 20px;
   margin-top: 50px;
   margin-bottom: 40px;
+  text-decoration-line: none;
 `
 
 const StyledImg = styled.img`

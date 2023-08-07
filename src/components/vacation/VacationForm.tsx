@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { vacationApi } from '@/api/api';
+import { VacationApi } from '@/api/api';
 import { AlignType } from 'rc-table/lib/interface';
 import  styled from 'styled-components/';
 import { SelectMonth, SelectYear } from 'components/common/index'
@@ -18,8 +18,8 @@ export const VacationForm = () => {
 
   const vacationList = async () =>{
     try{
-      const res = await vacationApi()
-      setVacationLists(res.data.response)
+      const res = await VacationApi()
+      setVacationLists(res.data.response.content)
     } catch(error) {
       console.error('error :' + error)
     }

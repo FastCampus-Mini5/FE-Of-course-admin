@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Table } from 'antd'
 import styled from 'styled-components'
-import { DutyPeindingListsApi } from '@/api/api'
+import { DutyPeindingListsApi, DutyProceedApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface';
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 
@@ -18,7 +17,7 @@ export const DutyPendingForm = () => {
   const dutyPendingList = async () => {
     try {
       const res = await DutyPeindingListsApi()
-      setDutyPendingLists(res.data.response)
+      setDutyPendingLists(res.data.response.content)
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -88,12 +87,20 @@ export const DutyPendingForm = () => {
   ]
 
   // 승인, 거절 버튼
-  function handleApprove(e) {
-    console.log(e)
+  const handleApprove = async(index: number) => {
+    try {
+      await DutyProceedApi(index, 'APPROVE')
+    } catch(error) {
+      console.error('error : ' + error)
+    }
   }
 
-  function handleReject(e) {
-    console.log(e)
+  const handleReject = async(index: number) => {
+    try {
+      await DutyProceedApi(index, 'REJECT')
+    } catch(error) {
+      console.error('error : ' + error)
+    }
   }
 
   return (

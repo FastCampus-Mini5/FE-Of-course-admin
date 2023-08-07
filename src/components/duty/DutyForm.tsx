@@ -18,7 +18,7 @@ export const DutyForm = () => {
   const DutyList = async() => {
     try {
       const res = await DutyListApi()
-      setDutyLists(res.data.response)
+      setDutyLists(res.data.response.content)
     } catch (error) {
       console.error('error : ' + error)
     }

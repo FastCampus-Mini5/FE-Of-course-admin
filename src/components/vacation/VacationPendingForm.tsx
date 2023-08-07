@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { vacationPendingApi } from '@/api/api'
+import { VacationPendingApi, VacationProceedApi } from '@/api/api'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { AlignType } from 'rc-table/lib/interface';
 
@@ -17,8 +17,8 @@ export const VacationPendingForm = () => {
 
   const vacationPendingList = async () => {
     try {
-      const { data } = await vacationPendingApi()
-      setVacationPendingLists(data.response)
+      const res = await VacationPendingApi()
+      setVacationPendingLists(res.data.response.content)
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -95,12 +95,20 @@ export const VacationPendingForm = () => {
   ]
 
   // 승인, 거절 버튼
-  const handleApprove = (e) => {
-    console.log(e)
+  const handleApprove = async (email: string) => {
+    try {
+      await VacationProceedApi(email, 'APPROVE')
+    } catch(error) {
+      console.log('error : ' + error)
+    }
   }
 
-  const  handleReject = (e) => {
-    console.log(e)
+  const  handleReject = async(email: string) => {
+    try {
+      await VacationProceedApi(email, 'REJECT')
+    } catch(error) {
+      console.error('error : ' + error)
+    }
   }
 
   return (

@@ -1,5 +1,4 @@
 import { styled } from 'styled-components'
-import { Link } from 'react-router-dom'
 import { useRef, useEffect } from 'react'
 
 import Title from '../../assets/service-title.png'

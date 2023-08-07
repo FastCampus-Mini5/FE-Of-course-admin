@@ -20,7 +20,7 @@ export const UserApproveForm = () => {
     try {
       const res = await userApproveApi()
       if(res) {
-        setUserApproveLists(res.data.response)
+        setUserApproveLists(res.data.response.content)
       }
     } catch (error) {
       console.error('error : ' + error)

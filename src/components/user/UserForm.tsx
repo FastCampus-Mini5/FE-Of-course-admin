@@ -18,7 +18,7 @@ export const UserForm = () => {
     try {
       const res = await userListApi()
       if(res) {
-        setUserLists(res.data.response)        
+        setUserLists(res.data.response.content)        
       }
     } catch (error) {
       console.error('error : ' + error);

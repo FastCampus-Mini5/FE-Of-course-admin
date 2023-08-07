@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Table } from 'antd'
 import styled from 'styled-components'
 import { vacationPendingApi } from '@/api/api'
+import { StyledBaseSection, StyledBaseTable } from 'styles/index'
+import { AlignType } from 'rc-table/lib/interface';
 
 interface VacationPendin {
   username: string,
@@ -29,22 +30,21 @@ export const VacationPendingForm = () => {
 
   // table
   const tableItemSource = vacationPendingLists.map((item, index) => ({
-    key: index,
+    key: index+1,
     username: item.username,
     email: item.email,
     createdDate: item.createdDate,
     startDate: item.startDate,
     endDate: item.endDate,
     approveButton: (
-      <StyleButton>
-        <button onClick = {() => handleApprove(index)}>
+      <StyledButton>
+        <button onClick = {() => handleApprove(item.email)}>
           승인
         </button>
-        <button onClick = {() => handleReject(index)}>
+        <button onClick = {() => handleReject(item.email)}>
           거절
         </button>
-      </StyleButton>
-
+      </StyledButton>
     )
   }))
 
@@ -52,60 +52,69 @@ export const VacationPendingForm = () => {
     {
       title: '번호',
       dataIndex: 'key',
-      key: 'key'
+      key: 'key',
+      align: 'center' as AlignType,
     },
     {
       title: '성명',
       dataIndex: 'username',
-      key: 'username'
+      key: 'username',
+      align: 'center' as AlignType,
+      width: 100
     },
     {
       title: '아이디',
       dataIndex: 'email',
-      key: 'email'
+      key: 'email',
+      align: 'center' as AlignType,
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
-      key: 'createdDate'
+      key: 'createdDate',
+      align: 'center' as AlignType,
     },
     {
       title: '시작일',
       dataIndex: 'startDate',
-      key: 'startDate'
+      key: 'startDate',
+      align: 'center' as AlignType,
     },
     {
       title: '종료일',
       dataIndex: 'endDate',
-      key: 'endDate'
+      key: 'endDate',
+      align: 'center' as AlignType,
     },
     {
       title: '확인',
       dataIndex: 'approveButton',
-      key: 'approveButton'
+      key: 'approveButton',
+      align: 'center' as AlignType,
     }
   ]
 
   // 승인, 거절 버튼
-  function handleApprove(e) {
+  const handleApprove = (e) => {
     console.log(e)
   }
 
-  function handleReject(e) {
+  const  handleReject = (e) => {
     console.log(e)
   }
 
   return (
-    <>
-      <Table
+    <StyledBaseSection>
+      <span>연차 요청 리스트</span>
+      <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </>
+    </StyledBaseSection>
   )
 }
 
-const StyleButton = styled.div`
+const StyledButton = styled.div`
   display: flex;
   gap: 10px;
   width: 100px;

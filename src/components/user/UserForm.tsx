@@ -2,6 +2,7 @@ import styled  from 'styled-components'
 import {useState, useEffect} from 'react'
 import {Table} from 'antd'
 import { userListApi } from "@/api/api";
+import { AlignType } from 'rc-table/lib/interface';
 
 interface User {
   username: string,
@@ -43,70 +44,64 @@ export const UserForm = () => {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '사원명',
       dataIndex: 'username',
       key: 'username',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '입사일',
       dataIndex: 'hireDate',
       key: 'hireDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '전체연차',
       dataIndex: '',
       key: '',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '잔여연차',
       dataIndex: 'remainVacation',
       key: 'remainVacation',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
   ]
 
   return (
     <>
-      <div>
-        <span>
+      <Styledspan>
           유저 리스트
-        </span>
-        <StyleTable
-          dataSource={tableItemSource}
-          columns={itemColumns}
-          pagination = {{simple: true}}
-          size="small"
-        />
-      </div>
-
+      </Styledspan>
+      <StyledTable
+        dataSource={tableItemSource}
+        columns={itemColumns}
+        pagination = {{simple: true}}
+        size="small"
+      />
     </>
   )
 }
+const Styledspan = styled.div`
+  text-align: center;
+  font-size: 30px;
+  margin-top: 40px;
+`
 
-const StyleTable = styled(Table)`
-  margin-top: 30px;
+
+const StyledTable = styled(Table)`
+  min-width: 800px;
+  max-width: 800px;
   margin-left: 50px;
-  .ant-table-cell {
-    padding-bottom: 10px;
-  }
-  .userListTable {
-    text-align: center;
-  }
-  .ant-table-content {
-    text-align: center;
-
-  }
-  min-width: 1000px;
+  margin-top: 30px;
 `

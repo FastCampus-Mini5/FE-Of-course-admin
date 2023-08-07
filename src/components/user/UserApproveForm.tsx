@@ -3,6 +3,7 @@ import { Table } from 'antd'
 import { userApproveApi } from '@/api/api'
 import styled from 'styled-components'
 import { UserApproveButton } from './UserApproveButton'
+import { AlignType } from 'rc-table/lib/interface';
 
 interface UserApprove {
   username: string
@@ -46,50 +47,53 @@ export const UserApproveForm = () => {
       title: '사원명',
       dataIndex: 'username',
       key: 'username',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '입사일',
       dataIndex: 'hireDate',
       key: 'hireDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '승인여부',
       dataIndex: 'approveButton',
       key: 'approveButton',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     }
 
   ]
 
   return (
-    <>
-      <div>
-        <span>
-          승인요청
-        </span>
-        <StyledTable
-          dataSource={tableItemSources}
-          columns={tableColumns}
-          pagination = {{pageSize: 5, simple: true}}
-          size='large'
-        />
-      </div>
-    </>
+    <StyledSection>
+      <span>
+        승인요청
+      </span>
+      <StyledTable
+        dataSource={tableItemSources}
+        columns={tableColumns}
+        pagination = {{pageSize: 5, simple: true}}
+        size='large'
+      />
+    </StyledSection>
   )
 }
 
+const StyledSection = styled.section`
+  margin-top: 40px;
+  text-align: center;
+  font-size: 30px;
+`
+
 const StyledTable = styled(Table)`
+  min-width: 800px;
   max-width: 800px;
   margin-left: 50px;
-  .ant-table-wrapper {
-    width: 100%
-  }
+  margin-top: 30px;
 `

@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import { ErrorComponent } from 'components/index'
-import {Layout} from 'components/common/index'
+import {Layout} from '@/components/common/index'
 import { 
   Duty, 
   DutyPending, 

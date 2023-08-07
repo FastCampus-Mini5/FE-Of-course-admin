@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { Table } from 'antd'
 import styled from 'styled-components'
 import { DutyPeindingListsApi } from '@/api/api'
+import { AlignType } from 'rc-table/lib/interface';
+import { StyledBaseSection, StyledBaseTable } from 'styles/index'
+
 interface DutyPending {
   username : string
   email: string
@@ -34,14 +37,14 @@ export const DutyPendingForm = () => {
     createdDate: item.createdDate,
     dutyDate: item.dutyDate,
     approveButton: (
-      <StyleButton>
+      <StyledButton>
         <button onClick = {() => handleApprove(index)}>
           승인
         </button>
         <button onClick = {() => handleReject(index)}>
           거절
         </button>
-      </StyleButton>
+      </StyledButton>
     )
   }))
 
@@ -50,37 +53,37 @@ export const DutyPendingForm = () => {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '성명',
       dataIndex: 'ueername',
       key: 'ueername',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '신청일',
       dataIndex: 'createdDate',
       key: 'createdDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '당직일',
       dataIndex: 'dutyDate',
       key: 'dutyDate',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     },
     {
       title: '승인여부',
       dataIndex: 'approveButton',
       key: 'approveButton',
-      align: 'center' as 'center'
+      align: 'center' as AlignType
     }
   ]
 
@@ -94,16 +97,18 @@ export const DutyPendingForm = () => {
   }
 
   return (
-    <>
-      <Table
+    <StyledBaseSection>
+      <span>당직 요청 리스트</span>
+      <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </>
+    </StyledBaseSection>
   )
 }
 
-const StyleButton = styled.div`
+
+const StyledButton = styled.div`
   display: flex;
   gap: 10px;
   width: 100px;

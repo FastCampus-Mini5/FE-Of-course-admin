@@ -3,6 +3,7 @@ import { Table } from 'antd'
 import styled from 'styled-components'
 import { DutyPeindingListsApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface';
+import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 
 interface DutyPending {
   username : string
@@ -36,14 +37,14 @@ export const DutyPendingForm = () => {
     createdDate: item.createdDate,
     dutyDate: item.dutyDate,
     approveButton: (
-      <StyleButton>
+      <StyledButton>
         <button onClick = {() => handleApprove(index)}>
           승인
         </button>
         <button onClick = {() => handleReject(index)}>
           거절
         </button>
-      </StyleButton>
+      </StyledButton>
     )
   }))
 
@@ -96,31 +97,19 @@ export const DutyPendingForm = () => {
   }
 
   return (
-    <StyledSection>
+    <StyledBaseSection>
       <span>당직 요청 리스트</span>
-      <StyledTable
+      <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </StyledSection>
+    </StyledBaseSection>
   )
 }
-const StyledSection = styled.section`
-  font-size: 30px;
-  text-align: center;
-  margin-top: 40px;
-  min-width: 1200px;
-  max-width: 1200px;
-`
 
 
-const StyleButton = styled.div`
+const StyledButton = styled.div`
   display: flex;
   gap: 10px;
   width: 100px;
-`
-
-const StyledTable = styled(Table)`
-  margin-left: 50px;
-  margin-top: 30px;
 `

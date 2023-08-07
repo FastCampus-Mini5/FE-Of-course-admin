@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react'
-import { Table } from 'antd'
 import { vacationApi } from '@/api/api';
 import { AlignType } from 'rc-table/lib/interface';
 import  styled from 'styled-components/';
 import { SelectMonth, SelectYear } from 'components/common/index'
-import { StyledSection } from 'styles/index'
+import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 interface Vacation {
   username: string;
   email: string;
@@ -138,7 +137,7 @@ export const VacationForm = () => {
 
 
   return (
-    <StyledSection>
+    <StyledBaseSection>
       <span>연차 리스트</span>
       <StyledSelectContainer>
         <StyledAllSearchButton onClick = {handleAllSearch}>전체</StyledAllSearchButton>
@@ -151,17 +150,18 @@ export const VacationForm = () => {
               handleInputChange(); // Enter 키가 눌렸을 때 검색 실행
             }
           }}/>
+          <button onClick = {() => {handleInputChange()}}>검색</button>
         <StyledSearchButtonContainer>
           <SelectYear selectedYear = {selectedYear} onYearChange = {handleYearChange}/>
           <SelectMonth selectedMonth = {selectedMonth} onMonthChange = {handleMonthChange}/>
           <StyledButton onClick = {handleSearch}>검색</StyledButton>
         </StyledSearchButtonContainer>
       </StyledSelectContainer>
-      <StyledTable
+      <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </StyledSection>
+    </StyledBaseSection>
   )
 }
 
@@ -170,9 +170,7 @@ const StyledSelectContainer = styled.div`
   display: flex;
   gap: 10px;
   margin: 30px; auto;
-  justify-content: space-between;
 `
-
 
 const StyledAllSearchButton = styled.button`
   margin-left: 40px;
@@ -180,7 +178,7 @@ const StyledAllSearchButton = styled.button`
 `
 
 const StyledSearchButtonContainer = styled.div`
-
+  margin-left: auto;
 `
 
 const StyledButton = styled.button`
@@ -188,12 +186,8 @@ const StyledButton = styled.button`
   width: 70px;
 `
 
-const StyledTable = styled(Table)`
-  margin-left: 50px;
-  margin-top: 30px;
-`
-
 const StyledInput = styled.input`
   width: 200px;
   heigh: 35px;
+  margin-left: 20px;
 `

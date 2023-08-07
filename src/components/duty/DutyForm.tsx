@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Table } from 'antd'
 import { SelectMonth, SelectYear } from "components/common/index"
+import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { DutyListApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface';
 import { styled } from 'styled-components'
@@ -125,11 +125,11 @@ export const DutyForm = () => {
   ]
 
   return (
-    <StyledUserSection>
+    <StyledBaseSection>
       <span> 당직 리스트</span>
       <StyledSelectContainer>
         <StyledAllSearchButton onClick = {handleAllSearch}>전체</StyledAllSearchButton>
-        <input 
+        <StyledInput 
           value = {searchValue}
           onChange = {e => setSearchValue(e.target.value)}
           placeholder='성명' 
@@ -138,44 +138,44 @@ export const DutyForm = () => {
               handleInputChange(); // Enter 키가 눌렸을 때 검색 실행
             }
           }}/>
+          <button onClick = {() => {handleInputChange()}}>검색</button>
         <StyledSearchButtonContainer>
           <SelectYear selectedYear = {selectedYear} onYearChange = {handleYearChange}/>
           <SelectMonth selectedMonth = {selectedMonth} onMonthChange = {handleMonthChange}/>
-          <button onClick = {handleSearch}>검색</button>
+          <StyledButton onClick = {handleSearch}>검색</StyledButton>
         </StyledSearchButtonContainer>
       </StyledSelectContainer>
-      <StyledTable
+      <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </StyledUserSection>
+    </StyledBaseSection>
   )
 }
 
 
-const StyledUserSection = styled.section`
-  text-align: center;
-  font-size: 30px;
-  margin-top: 40px;
-  min-width: 1200px;
-  max-width: 1200px;
-`
-
 const StyledSelectContainer = styled.div`
   display: flex;
+  gap: 10px;
   margin: 30px; auto;
-
 `
 
 const StyledAllSearchButton = styled.button`
-
+  margin-left: 40px;
+  width: 100px;
 `
 
 const StyledSearchButtonContainer = styled.div`
-  margin-left: auto
+  margin-left: auto;
 `
 
-const StyledTable = styled(Table)`
-  margin-left: 50px;
-  margin-top: 30px;
+const StyledButton = styled.button`
+  height: 35px;
+  width: 70px;
+`
+
+const StyledInput = styled.input`
+  width: 200px;
+  heigh: 35px;
+  margin-left: 20px;
 `

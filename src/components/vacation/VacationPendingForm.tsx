@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
-import { Table } from 'antd'
 import styled from 'styled-components'
 import { vacationPendingApi } from '@/api/api'
+import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { AlignType } from 'rc-table/lib/interface';
 
 interface VacationPendin {
@@ -38,14 +38,13 @@ export const VacationPendingForm = () => {
     endDate: item.endDate,
     approveButton: (
       <StyledButton>
-        <button onClick = {() => handleApprove(index)}>
+        <button onClick = {() => handleApprove(item.email)}>
           승인
         </button>
-        <button onClick = {() => handleReject(index)}>
+        <button onClick = {() => handleReject(item.email)}>
           거절
         </button>
       </StyledButton>
-
     )
   }))
 
@@ -96,40 +95,27 @@ export const VacationPendingForm = () => {
   ]
 
   // 승인, 거절 버튼
-  function handleApprove(e) {
+  const handleApprove = (e) => {
     console.log(e)
   }
 
-  function handleReject(e) {
+  const  handleReject = (e) => {
     console.log(e)
   }
 
   return (
-    <StyledSection>
+    <StyledBaseSection>
       <span>연차 요청 리스트</span>
-      <StyledTable
+      <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}
       />
-    </StyledSection>
+    </StyledBaseSection>
   )
 }
-
-const StyledSection = styled.section`
-  font-size: 30px;
-  text-align: center;
-  margin-top: 40px;
-  min-width: 1200px;
-  max-width: 1200px;
-`
 
 const StyledButton = styled.div`
   display: flex;
   gap: 10px;
   width: 100px;
-`
-
-const StyledTable = styled(Table)`
-  margin-left: 50px;
-  margin-top: 30px;
 `

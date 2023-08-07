@@ -7,11 +7,9 @@ import Title from '../../assets/service-title.png'
 export const SignInForm = () => {
   const texts = {
     title: '당연하지',
-    email: '이메일',
-    pwd: '비밀번호',
-    btn: '로그인',
-    forgotPwd: '비밀번호 찾기',
-    signup: '회원가입 하기',
+    email: '관리자 이메일',
+    pwd: '관리자 비밀번호',
+    btn: '관리자 로그인',
     emailPh: '이메일을 입력해주세요.',
     pwdPh: '비밀번호를 입력해주세요'
   }
@@ -48,14 +46,6 @@ export const SignInForm = () => {
               placeholder={texts.pwdPh}
             />
             <button className="signin">{texts.btn}</button>
-            <div className="signup-cta">
-              <Link
-                to="/reset"
-                className="forgot-pwd">
-                {texts.forgotPwd}
-              </Link>
-              <Link to="/signup">{texts.signup}</Link>
-            </div>
           </form>
         </div>
       </div>

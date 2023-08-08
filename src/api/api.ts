@@ -18,7 +18,7 @@ export const AdminSignIn = async() => {
 // 전체 유저 정보리스트
 export const userListApi = async() => {
   try {
-    const data = await axios.get(`${API_URL}/user/list`,  {
+    const data = await axios.get(`${API_URL}/user/list?page=0&size=100`,  {
       headers: {
         'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI0ZTc2M01wVXhFaDgrOTFINjlFblJ3PT0iLCJyb2xlIjoiQURNSU4iLCJpZCI6NywiZXhwIjoxNjkxNTU4MjE5LCJ1c2VybmFtZSI6IjRlNzYzTXBVeEVoOCs5MUg2OUVuUnc9PSJ9.Cq7hmF07lt9rLBeV_TyXOmMf20oUE3P8nh9MvedqGodvKZhyHmAMS0DF03GUzaTy1tZ1l9inULtF2VuiiaXgCQ' 
       }
@@ -104,11 +104,11 @@ export const VacationPendingApi = async() => {
 }
 
 // 연차 승인
-export const VacationProceedApi = async(email: string, status: string) => {
+export const VacationProceedApi = async(index: number, status: string) => {
   try {
     const data = await axios.post(`${API_URL}/vacation/proceed`, 
     { 
-      id: email,
+      id: index,
       status
     }, 
     {
@@ -163,7 +163,7 @@ export const DutyPeindingListsApi = async() => {
 // 당직 승인
 export const DutyProceedApi = async(index: number, status: string) => {
   try {
-    const data = await axios.post(`${API_URL}/duty/approve`, 
+    const data = await axios.post(`${API_URL}/duty/proceed`, 
     {
       id: index,
       status

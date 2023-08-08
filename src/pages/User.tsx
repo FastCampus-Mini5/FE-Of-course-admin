@@ -3,6 +3,7 @@ import {UserForm} from "@/components/user/UserForm"
 
 
 export const User = () => {
+
   return (
     <>
       <UserApproveForm/>

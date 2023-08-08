@@ -12,7 +12,7 @@ import {
 
 export const router = createBrowserRouter([
   {
-    path: '/signin',
+    path: '/',
     element: <SignIn />,
     errorElement: <ErrorComponent />,
     children: []
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorComponent />,
     children: [
       {
-        path: '/',
+        path: '/user',
         element: <User />,
         errorElement: <ErrorComponent />,
         children: []

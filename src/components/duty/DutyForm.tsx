@@ -86,8 +86,8 @@ export const DutyForm = () => {
     key: index+1,
     username: item.username,
     email: item.email,
-    createdDate: item.createdDate,
-    dutyDate: item.dutyDate
+    createdDate: item.createdDate.split('T')[0],
+    dutyDate: item.dutyDate.split('T')[0]
   }))
 
   const tableColumns = [

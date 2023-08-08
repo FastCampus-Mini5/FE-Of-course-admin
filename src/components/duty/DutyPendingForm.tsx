@@ -38,12 +38,12 @@ export const DutyPendingForm = () => {
     dutyDate: item.dutyDate.split('T')[0],
     approveButton: (
       <StyledButton>
-        <button onClick = {() => handleApprove(item.id)}>
+        <StyledApproveButton onClick = {() => handleApprove(item.id)}>
           승인
-        </button>
-        <button onClick = {() => handleReject(item.id)}>
+        </StyledApproveButton>
+        <StyledRejectButton onClick = {() => handleReject(item.id)}>
           거절
-        </button>
+        </StyledRejectButton>
       </StyledButton>
     )
   }))
@@ -124,4 +124,28 @@ const StyledButton = styled.div`
   display: flex;
   gap: 10px;
   width: 100px;
+  text-align: center;
+`
+
+const StyledApproveButton = styled.button`
+  width: 40px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: #56c1e9;
+
+  &:hover {
+    background-color: #2656f6;
+  }
+`
+
+const StyledRejectButton = styled.button`
+  margin-left: 10px;
+  background: #ff6666;
+  width: 40px;
+  height: 30px;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: #e04242;
+  }
 `

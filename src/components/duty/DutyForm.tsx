@@ -141,7 +141,7 @@ export const DutyForm = () => {
               handleInputChange(); // Enter 키가 눌렸을 때 검색 실행
             }
           }}/>
-          <button onClick = {() => {handleInputChange()}}>검색</button>
+          <StyledButton onClick = {() => {handleInputChange()}}>검색</StyledButton>
         <StyledSearchButtonContainer>
           <SelectYear selectedYear = {selectedYear} onYearChange = {handleYearChange}/>
           <SelectMonth selectedMonth = {selectedMonth} onMonthChange = {handleMonthChange}/>
@@ -151,6 +151,8 @@ export const DutyForm = () => {
       <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}
+        pagination={{pageSize: 8}}
+        showSorterTooltip={false}
       />
     </StyledBaseSection>
   )
@@ -166,6 +168,24 @@ const StyledSelectContainer = styled.div`
 const StyledAllSearchButton = styled.button`
   margin-left: 40px;
   width: 100px;
+  height: 35px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  align-items: center;
+
+  /* 마우스 호버 시 스타일 변경 */
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  /* 클릭 시 스타일 변경 */
+  &:active {
+    background-color: #003366;
+  }
 `
 
 const StyledSearchButtonContainer = styled.div`
@@ -175,10 +195,28 @@ const StyledSearchButtonContainer = styled.div`
 const StyledButton = styled.button`
   height: 35px;
   width: 70px;
+  border-radius: 8px;
+
+  /* 아이콘 스타일 */
+  .icon {
+    margin-right: 8px;
+  }
+
+  /* 마우스 호버 시 스타일 변경 */
+  &:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: white;
+  }
+
+  /* 클릭 시 스타일 변경 */
+  &:active {
+    background-color: #0056b3;
+  }
 `
 
 const StyledInput = styled.input`
   width: 200px;
-  heigh: 35px;
+  height: 35px;
   margin-left: 20px;
 `

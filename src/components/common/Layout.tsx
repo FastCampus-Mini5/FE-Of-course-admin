@@ -42,7 +42,6 @@ export const Layout = () => {
         <div>
           <Outlet/>
         </div>
-
       </StyledDiv>
     </>
 
@@ -50,12 +49,12 @@ export const Layout = () => {
 }
 
 const StyledDiv = styled.div`
-  position: fix;
   display: flex;
 `
 
 const StyledNavContainer = styled.div`
   min-width: 200px;
+  min-height: 720px;
   height: 100vh;
   background-color: #66ffff;
   justify-content: center;
@@ -76,5 +75,20 @@ const StyledImg = styled.img`
 `
 
 const StyledSignOutButton = styled.button`
-  bottom: 0;  
+  position: fix;
+  bottom: 20px;
+  padding: 10px 20px;
+  background-color: #ff5555;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease-in-out;
+  width: 160px;  
+  border-radius: 10px;
+
+  &:hover {
+    background-color: #e04242;
+  }
 `

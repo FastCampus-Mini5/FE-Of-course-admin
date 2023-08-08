@@ -156,6 +156,7 @@ export const VacationForm = () => {
               handleInputChange(); // Enter 키가 눌렸을 때 검색 실행
             }
           }}/>
+          <StyledButton onClick = {() => {handleInputChange()}}>검색</StyledButton>
         <StyledSearchButtonContainer>
           <SelectYear selectedYear = {selectedYear} onYearChange = {handleYearChange}/>
           <SelectMonth selectedMonth = {selectedMonth} onMonthChange = {handleMonthChange}/>
@@ -165,6 +166,8 @@ export const VacationForm = () => {
       <StyledTable
         dataSource={tableItemSource}
         columns={tableColumns}
+        pagination={{pageSize: 8}}
+        showSorterTooltip={false}
       />
     </StyledBaseSection>
   )
@@ -175,22 +178,58 @@ const StyledSelectContainer = styled.div`
   display: flex;
   gap: 10px;
   margin: 30px; auto;
-  justify-content: space-between;
 `
 
 
 const StyledAllSearchButton = styled.button`
   margin-left: 40px;
   width: 100px;
+  height: 35px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  align-items: center;
+
+  /* 마우스 호버 시 스타일 변경 */
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  /* 클릭 시 스타일 변경 */
+  &:active {
+    background-color: #003366;
+  }
 `
 
 const StyledSearchButtonContainer = styled.div`
-
+  margin-left: auto;
 `
 
 const StyledButton = styled.button`
   height: 35px;
   width: 70px;
+  border-radius: 8px;
+
+
+  /* 아이콘 스타일 */
+  .icon {
+    margin-right: 8px;
+  }
+
+  /* 마우스 호버 시 스타일 변경 */
+  &:hover {
+    background-color: #007bff;
+    color: white;
+    border-color: white;
+  }
+
+  /* 클릭 시 스타일 변경 */
+  &:active {
+    background-color: #0056b3;
+  }
 `
 
 const StyledTable = styled(Table)`
@@ -200,5 +239,6 @@ const StyledTable = styled(Table)`
 
 const StyledInput = styled.input`
   width: 200px;
-  heigh: 35px;
+  height: 35px;
+  margin-left: 20px;
 `

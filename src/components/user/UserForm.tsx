@@ -77,7 +77,7 @@ export const UserForm = () => {
       <StyledTable
         dataSource={tableItemSource}
         columns={itemColumns}
-        pagination={{ simple: true, pageSize: 7 }}
+        pagination={{ simple: true, pageSize: 5 }}
         size="small"
       />
     </>

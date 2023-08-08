@@ -6,7 +6,7 @@ const authInterceptors = (instance: AxiosInstance): AxiosInstance => {
     config => {
       // 로컬스토리지에 저장 되어 있는 AccessToken을 가져온다.
       const accessToken = localStorage.getItem(
-        'KEY(**TEMP VALUE**, VALUE REQUIRED)'
+        'token'
       )
       if (config.headers && accessToken) {
         // AccessToken이 정상적으로 저장되어 있으면 headers에 Authorization에 값을 추가해준다.

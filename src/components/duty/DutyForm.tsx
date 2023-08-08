@@ -96,7 +96,8 @@ export const DutyForm = () => {
       dataIndex: 'key',
       key: 'key',
       align: 'center' as AlignType,
-      width: '100px'
+      width: '100px',
+      sorter: (a, b) => a-b
     },
     {
       title: '성명',
@@ -114,13 +115,15 @@ export const DutyForm = () => {
       title: '신청일',
       dataIndex: 'createdDate',
       key: 'createdDate',
-      align: 'center' as AlignType
+      align: 'center' as AlignType,
+      sorter: (a, b) => a.createdDate.split('T')[0].replace(/-/g, '') - b.createdDate.split('T')[0].replace(/-/g, '')
     },
     {
       title: '당직일',
       dataIndex: 'dutyDate',
       key: 'dutyDate',
-      align: 'center' as AlignType
+      align: 'center' as AlignType,
+      sorter: (a, b) => a.dutyDate.split('T')[0].replace(/-/g, '') - b.dutyDate.split('T')[0].replace(/-/g, '')
     },
   ]
 

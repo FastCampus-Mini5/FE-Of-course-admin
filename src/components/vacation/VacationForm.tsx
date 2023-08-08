@@ -86,7 +86,7 @@ export const VacationForm = () => {
     username: item.username,
     email: item.email,
     reason: item.reason,
-    createAt: item.createdAt.split('T')[0],
+    createdAt: item.createdAt.split('T')[0],
     startDate: item.startDate.split('T')[0],
     endDate: item.endDate.split('T')[0]
   }))
@@ -96,7 +96,8 @@ export const VacationForm = () => {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
-      align: 'center' as AlignType
+      align: 'center' as AlignType,
+      sorter: (a, b) => a-b
     },
     {
       title: '성명',
@@ -119,21 +120,24 @@ export const VacationForm = () => {
     },
     {
       title: '신청일',
-      dataIndex: 'createAt',
-      key: 'createAt',
-      align: 'center' as AlignType
+      dataIndex: 'createdAt',
+      key: 'createdAt',
+      align: 'center' as AlignType,
+      sorter: (a, b) => a.createdAt.split('T')[0].replace(/-/g, '') - b.createdAt.split('T')[0].replace(/-/g, '')
     },
     {
       title: '시작일',
       dataIndex: 'startDate',
       key: 'startDate',
-      align: 'center' as AlignType
+      align: 'center' as AlignType,
+      sorter: (a, b) => a.startDate.split('T')[0].replace(/-/g, '') - b.startDate.split('T')[0].replace(/-/g, '')
     },
     {
       title: '종료일',
       dataIndex: 'endDate',
       key: 'endDate',
-      align: 'center' as AlignType
+      align: 'center' as AlignType,
+      sorter: (a, b) => a.endDate.split('T')[0].replace(/-/g, '') - b.endDate.split('T')[0].replace(/-/g, '')
     },
   ]
 

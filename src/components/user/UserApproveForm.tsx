@@ -20,7 +20,7 @@ export const UserApproveForm = () => {
     try {
       const res = await userApproveApi()
       if(res) {
-        setUserApproveLists(res.data.response)
+        setUserApproveLists(res.data.response.content)
       }
     } catch (error) {
       console.error('error : ' + error)
@@ -31,7 +31,6 @@ export const UserApproveForm = () => {
     userApprove()
   }, [])
 
-  console.log(userApproveLists)
 
   // table
   const tableItemSources = userApproveLists.map((item, index) => ({
@@ -39,7 +38,7 @@ export const UserApproveForm = () => {
     username: item.username,
     email: item.email,
     hireDate: item.hireDate,
-    approveButton: <UserApproveButton email = {item.email}/>
+    approveButton: <UserApproveButton email = {item.email} onUserApporve = {userApprove}/>
   }))
 
   const tableColumns = [

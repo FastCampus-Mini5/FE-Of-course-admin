@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Table } from 'antd'
 import styled from 'styled-components'
-import { DutyPeindingListsApi } from '@/api/api'
+import { DutyPeindingListsApi, DutyProceedApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface';
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 
@@ -10,6 +9,7 @@ interface DutyPending {
   email: string
   createdDate: string
   dutyDate: string
+  id: number
 }
 
 export const DutyPendingForm = () => {
@@ -18,7 +18,7 @@ export const DutyPendingForm = () => {
   const dutyPendingList = async () => {
     try {
       const res = await DutyPeindingListsApi()
-      setDutyPendingLists(res.data.response)
+      setDutyPendingLists(res.data.response.content)
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -34,14 +34,14 @@ export const DutyPendingForm = () => {
     key: index+1,
     ueername: item.username,
     email: item.email,
-    createdDate: item.createdDate,
-    dutyDate: item.dutyDate,
+    createdDate: item.createdDate.split('T')[0],
+    dutyDate: item.dutyDate.split('T')[0],
     approveButton: (
       <StyledButton>
-        <button onClick = {() => handleApprove(index)}>
+        <button onClick = {() => handleApprove(item.id)}>
           승인
         </button>
-        <button onClick = {() => handleReject(index)}>
+        <button onClick = {() => handleReject(item.id)}>
           거절
         </button>
       </StyledButton>
@@ -88,12 +88,24 @@ export const DutyPendingForm = () => {
   ]
 
   // 승인, 거절 버튼
-  function handleApprove(e) {
-    console.log(e)
+  const handleApprove = async(id: number) => {
+    try {
+      await DutyProceedApi(id, 'APPROVE')
+      await dutyPendingList()
+      alert('승인되었습니다.')
+    } catch(error) {
+      console.error('error : ' + error)
+    }
   }
 
-  function handleReject(e) {
-    console.log(e)
+  const handleReject = async(id: number) => {
+    try {
+      await DutyProceedApi(id, 'REJECT')
+      await dutyPendingList()
+      alert('거절되었습니다.')
+    } catch(error) {
+      console.error('error : ' + error)
+    }
   }
 
   return (

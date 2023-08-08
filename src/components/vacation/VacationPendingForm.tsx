@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { vacationPendingApi } from '@/api/api'
+import { VacationPendingApi, VacationProceedApi } from '@/api/api'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { AlignType } from 'rc-table/lib/interface';
 
 interface VacationPendin {
   username: string,
   email: string,
+  reason: string,
   createdDate: string,
+  createdAt: string,
   startDate: string,
-  endDate: string
+  endDate: string,
+  id: number
 }
 
 export const VacationPendingForm = () => {
@@ -17,10 +20,11 @@ export const VacationPendingForm = () => {
 
   const vacationPendingList = async () => {
     try {
-      const { data } = await vacationPendingApi()
-      setVacationPendingLists(data.response)
+      const res = await VacationPendingApi()
+      setVacationPendingLists(res.data.response.content)
+      console.log(res)
     } catch (error) {
-      console.error('error : ' + error)
+      console.error('error : ' + error) 
     }
   }
 
@@ -28,20 +32,22 @@ export const VacationPendingForm = () => {
     vacationPendingList()
   }, [])
 
+console.log(vacationPendingLists)
+
   // table
   const tableItemSource = vacationPendingLists.map((item, index) => ({
     key: index+1,
     username: item.username,
     email: item.email,
-    createdDate: item.createdDate,
-    startDate: item.startDate,
-    endDate: item.endDate,
+    createdAt: item.createdAt.split('T')[0],
+    startDate: item.startDate.split('T')[0],
+    endDate: item.endDate.split('T')[0],
     approveButton: (
       <StyledButton>
-        <button onClick = {() => handleApprove(item.email)}>
+        <button onClick = {() => handleApprove(item.id)}>
           승인
         </button>
-        <button onClick = {() => handleReject(item.email)}>
+        <button onClick = {() => handleReject(item.id)}>
           거절
         </button>
       </StyledButton>
@@ -70,8 +76,8 @@ export const VacationPendingForm = () => {
     },
     {
       title: '신청일',
-      dataIndex: 'createdDate',
-      key: 'createdDate',
+      dataIndex: 'createdAt',
+      key: 'createdAt',
       align: 'center' as AlignType,
     },
     {
@@ -95,12 +101,24 @@ export const VacationPendingForm = () => {
   ]
 
   // 승인, 거절 버튼
-  const handleApprove = (e) => {
-    console.log(e)
+  const handleApprove = async (id: number) => {
+    try {
+      await VacationProceedApi(id, 'APPROVE')
+      await vacationPendingList()
+      alert('승인되었습니다.')
+    } catch(error) {
+      console.log('error : ' + error)
+    }
   }
 
-  const  handleReject = (e) => {
-    console.log(e)
+  const  handleReject = async(id: number) => {
+    try {
+      await VacationProceedApi(id, 'REJECT')
+      await vacationPendingList()
+      alert('거절되었습니다.')
+    } catch(error) {
+      console.error('error : ' + error)
+    }
   }
 
   return (

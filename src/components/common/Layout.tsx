@@ -6,7 +6,7 @@ export const Layout = () => {
   const navigate = useNavigate()
 
   const links = [
-    { path: '/', text: '유저 리스트'},
+    { path: '/user', text: '유저 리스트'},
     { path: '/vacationpending', text: '연차 요청 리스트'},
     { path: '/vacation', text: '연차 리스트'},
     { path: '/dutypending', text: '당직 요청 리스트'},
@@ -22,6 +22,10 @@ export const Layout = () => {
     </StyledNavitem>
   ))
 
+  const signOut = () => {
+    localStorage.removeItem('token')
+    navigate('/')
+  }
 
   return (
     <>
@@ -30,13 +34,15 @@ export const Layout = () => {
         <StyledNavContainer>
           <StyledImg 
             src = {logo}
-            onClick = {() => navigate('/')}
+            onClick = {() => navigate('/user')}
           />
           {searchLinks}
+          <StyledSignOutButton onClick = {signOut}>로그아웃</StyledSignOutButton>
         </StyledNavContainer>
         <div>
           <Outlet/>
         </div>
+
       </StyledDiv>
     </>
 
@@ -67,4 +73,8 @@ const StyledNavitem = styled(NavLink)`
 const StyledImg = styled.img`
   width : 200px;
   cursor: pointer;
+`
+
+const StyledSignOutButton = styled.button`
+  bottom: 0;  
 `

@@ -8,7 +8,7 @@ interface User {
   username: string,
   email: string,
   hireDate: string
-  reaminVacation: number
+  remainVacation: number
 }
 
 export const UserForm = () => {
@@ -18,7 +18,8 @@ export const UserForm = () => {
     try {
       const res = await userListApi()
       if(res) {
-        setUserLists(res.data.response)        
+        setUserLists(res.data.response.content
+          .sort((a:User, b:User) => Number(a.hireDate.split('T')[0].replace(/-/g, '')) - Number(b.hireDate.split('T')[0].replace(/-/g, ''))))      
       }
     } catch (error) {
       console.error('error : ' + error);
@@ -30,13 +31,14 @@ export const UserForm = () => {
   }, [])
 
 
+
   // table 
   const tableItemSource = userLists.map((item, index) => ({
     key: index+1,
     username: item.username,
     email: item.email,
-    hireDate: item.hireDate,
-    remainVacation: item.reaminVacation,
+    hireDate: item.hireDate.split('T')[0],
+    remainVacation: item.remainVacation,
   })) 
 
   const itemColumns = [
@@ -65,12 +67,6 @@ export const UserForm = () => {
       align: 'center' as AlignType
     },
     {
-      title: '전체연차',
-      dataIndex: '',
-      key: '',
-      align: 'center' as AlignType
-    },
-    {
       title: '잔여연차',
       dataIndex: 'remainVacation',
       key: 'remainVacation',
@@ -86,7 +82,7 @@ export const UserForm = () => {
       <StyledTable
         dataSource={tableItemSource}
         columns={itemColumns}
-        pagination = {{simple: true}}
+        pagination = {{simple: true, pageSize: 7}}
         size="small"
       />
     </>

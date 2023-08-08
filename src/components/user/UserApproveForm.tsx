@@ -3,7 +3,7 @@ import { Table } from 'antd'
 import { userApproveApi } from '@/api/api'
 import styled from 'styled-components'
 import { UserApproveButton } from './UserApproveButton'
-import { AlignType } from 'rc-table/lib/interface';
+import { AlignType } from 'rc-table/lib/interface'
 
 interface UserApprove {
   username: string
@@ -11,15 +11,13 @@ interface UserApprove {
   hireDate: string
 }
 
-
-
-export const UserApproveForm = () => {
+export const UserApproveForm = ({ userList }) => {
   const [userApproveLists, setUserApproveLists] = useState<UserApprove[]>([])
 
   const userApprove = async () => {
     try {
       const res = await userApproveApi()
-      if(res) {
+      if (res) {
         setUserApproveLists(res.data.response.content)
       }
     } catch (error) {
@@ -31,14 +29,19 @@ export const UserApproveForm = () => {
     userApprove()
   }, [])
 
-
   // table
   const tableItemSources = userApproveLists.map((item, index) => ({
     key: index,
     username: item.username,
     email: item.email,
     hireDate: item.hireDate,
-    approveButton: <UserApproveButton email = {item.email} onUserApporve = {userApprove}/>
+    approveButton: (
+      <UserApproveButton
+        email={item.email}
+        onUserApporve={userApprove}
+        userList={userList}
+      />
+    )
   }))
 
   const tableColumns = [
@@ -66,19 +69,16 @@ export const UserApproveForm = () => {
       key: 'approveButton',
       align: 'center' as AlignType
     }
-
   ]
 
   return (
     <StyledSection>
-      <span>
-        승인요청
-      </span>
+      <span>승인요청</span>
       <StyledTable
         dataSource={tableItemSources}
         columns={tableColumns}
-        pagination = {{pageSize: 5, simple: true}}
-        size='large'
+        pagination={{ pageSize: 5, simple: true }}
+        size="large"
       />
     </StyledSection>
   )

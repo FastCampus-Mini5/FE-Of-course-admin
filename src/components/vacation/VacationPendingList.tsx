@@ -4,19 +4,9 @@ import { VacationPendingApi, VacationProceedApi } from '@/api/api'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { AlignType } from 'rc-table/lib/interface';
 
-interface VacationPendin {
-  username: string,
-  email: string,
-  reason: string,
-  createdDate: string,
-  createdAt: string,
-  startDate: string,
-  endDate: string,
-  id: number
-}
 
-export const VacationPendingForm = () => {
-  const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendin[]>([])
+export const VacationPendingList = () => {
+  const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendingList[]>([])
 
   const vacationPendingList = async () => {
     try {
@@ -32,7 +22,6 @@ export const VacationPendingForm = () => {
     vacationPendingList()
   }, [])
 
-console.log(vacationPendingLists)
 
   // table
   const tableItemSource = vacationPendingLists.map((item, index) => ({
@@ -144,6 +133,7 @@ const StyledApproveButton = styled.button`
   height: 30px;
   border-radius: 8px;
   background-color: #56c1e9;
+  cursor: pointer;
 
   &:hover {
     background-color: #2656f6;
@@ -156,6 +146,7 @@ const StyledRejectButton = styled.button`
   width: 40px;
   height: 30px;
   border-radius: 8px;
+  cursor: pointer;
 
   &:hover {
     background-color: #e04242;

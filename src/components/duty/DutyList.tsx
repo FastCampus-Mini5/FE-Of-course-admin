@@ -5,20 +5,15 @@ import { DutyListApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface';
 import { styled } from 'styled-components'
 
-interface DutyList {
-  username: string
-  email: string
-  createdDate: string
-  dutyDate: string
-}
 
-export const DutyForm = () => {
+export const DutyList = () => {
   const [dutyLists, setDutyLists] = useState<DutyList[]>([])
 
   const DutyList = async() => {
     try {
       const res = await DutyListApi()
       setDutyLists(res.data.response.content)
+      setFilteredItems(res.data.response.content)
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -27,6 +22,14 @@ export const DutyForm = () => {
   useEffect(() => {
     DutyList()
   }, [])
+  
+  // 정렬
+  dutyLists
+    .sort((a, b) => {
+      const acc: any = a.dutyDate.split('T')[0].replace(/-/g, '') 
+      const cur: any = b.dutyDate.split('T')[0].replace(/-/g, '')
+      return cur - acc
+    })
 
   // 년도 선택 
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear())
@@ -79,9 +82,8 @@ export const DutyForm = () => {
     setFilteredItems(dutyLists)
   }
 
-
-
   // table
+
   const tableItemSource = filteredItems.map((item, index) => ({
     key: index+1,
     username: item.username,
@@ -97,7 +99,7 @@ export const DutyForm = () => {
       key: 'key',
       align: 'center' as AlignType,
       width: '100px',
-      sorter: (a, b) => a-b
+      sorter: (a, b) => a - b
     },
     {
       title: '성명',
@@ -131,7 +133,7 @@ export const DutyForm = () => {
     <StyledBaseSection>
       <span> 당직 리스트</span>
       <StyledSelectContainer>
-        <StyledAllSearchButton onClick = {handleAllSearch}>전체</StyledAllSearchButton>
+        <StyledAllSearchButton onClick = {handleAllSearch} >전체</StyledAllSearchButton>
         <StyledInput 
           value = {searchValue}
           onChange = {e => setSearchValue(e.target.value)}
@@ -196,6 +198,7 @@ const StyledButton = styled.button`
   height: 35px;
   width: 70px;
   border-radius: 8px;
+  cursor: pointer;
 
   /* 아이콘 스타일 */
   .icon {

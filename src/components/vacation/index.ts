@@ -1,2 +1,2 @@
-export * from 'components/vacation/VacationForm'
-export * from 'components/vacation/VacationPendingForm'
+export * from '@/components/vacation/VacationList'
+export * from '@/components/vacation/VacationPendingList'

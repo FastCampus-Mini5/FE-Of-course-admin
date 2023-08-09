@@ -4,16 +4,8 @@ import { DutyPeindingListsApi, DutyProceedApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface';
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 
-interface DutyPending {
-  username : string
-  email: string
-  createdDate: string
-  dutyDate: string
-  id: number
-}
-
-export const DutyPendingForm = () => {
-  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPending[]>([])
+export const DutyPendingList = () => {
+  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPendingList[]>([])
 
   const dutyPendingList = async () => {
     try {
@@ -132,6 +124,7 @@ const StyledApproveButton = styled.button`
   height: 30px;
   border-radius: 8px;
   background-color: #56c1e9;
+  cursor: pointer;
 
   &:hover {
     background-color: #2656f6;
@@ -144,6 +137,7 @@ const StyledRejectButton = styled.button`
   width: 40px;
   height: 30px;
   border-radius: 8px;
+  cursor: pointer;
 
   &:hover {
     background-color: #e04242;

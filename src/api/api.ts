@@ -32,7 +32,7 @@ export const userListApi = async() => {
 // 회원가입 요청 리스트
 export const userApproveApi = async() => {
   try {
-    const data = await authInstance.get(`${API_URL}/signup/list`)
+    const data = await authInstance.get(`${API_URL}/signup/list?page=0&size=100`)
     if(data.status > 300) {
       throw new Error('기록 작성에 실패하셨습니다.')
     }
@@ -60,7 +60,7 @@ export const ApproveSignUpApi = async(email : string) => {
 // 연차 승인 리스트
 export const VacationApi = async() => {
   try {
-    const data = await authInstance.get(`${API_URL}/vacation/approve/list`)
+    const data = await authInstance.get(`${API_URL}/vacation/approve/list?page=0&size=100`)
     if(data.status > 300) {
       throw new Error('기록 작성에 실패하셨습니다.')
     }
@@ -73,7 +73,7 @@ export const VacationApi = async() => {
 // 연차 신청 리스트
 export const VacationPendingApi = async() => {
   try {
-    const data = await authInstance.get(`${API_URL}/vacation/pending/list`)
+    const data = await authInstance.get(`${API_URL}/vacation/pending/list?page=0&size=100`)
     if(data.status > 300) {
       throw new Error('기록 작성에 실패하셨습니다.')
     }
@@ -103,7 +103,7 @@ export const VacationProceedApi = async(index: number, status: string) => {
 // 당직 승인 리스트
 export const DutyListApi = async() => {
   try {
-    const data = await authInstance.get(`${API_URL}/duty/approve/list`)
+    const data = await authInstance.get(`${API_URL}/duty/approve/list?page=0&size=100`)
     if(data.status > 300) {
       throw new Error('기록 작성에 실패하셨습니다.')
     }
@@ -116,7 +116,7 @@ export const DutyListApi = async() => {
 // 당직 요청 리스트
 export const DutyPeindingListsApi = async() => {
   try {
-    const data = await authInstance.get(`${API_URL}/duty/pending/list`)
+    const data = await authInstance.get(`${API_URL}/duty/pending/list?page=0&size=100`)
     if(data.status > 300) {
       throw new Error('기록 작성에 실패하셨습니다.')
     }

@@ -29,19 +29,24 @@ export const Layout = () => {
 
   return (
     <>
-      <StyledDiv>
+      <StyledDiv className = '최종'>
 
         <StyledNavContainer>
-          <StyledImg 
-            src = {logo}
-            onClick = {() => navigate('/user')}
-          />
-          {searchLinks}
+          <div>
+            <StyledImg 
+              src = {logo}
+              onClick = {() => navigate('/user')}
+            />
+            {searchLinks}
+          </div>
           <StyledSignOutButton onClick = {signOut}>로그아웃</StyledSignOutButton>
         </StyledNavContainer>
-        <div>
+        <StyledOulet>
           <Outlet/>
-        </div>
+        </StyledOulet>
+        
+
+
       </StyledDiv>
     </>
 
@@ -50,15 +55,20 @@ export const Layout = () => {
 
 const StyledDiv = styled.div`
   display: flex;
+  background-color: #f5f6fa;
+  width: 1440px;
+  height: 923px;
 `
 
 const StyledNavContainer = styled.div`
   min-width: 200px;
-  min-height: 720px;
-  height: 100vh;
+  height: 923px;
   background-color: #66ffff;
   justify-content: center;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const StyledNavitem = styled(NavLink)`
@@ -76,6 +86,7 @@ const StyledImg = styled.img`
 
 const StyledSignOutButton = styled.button`
   position: fix;
+  display: inline-block;
   bottom: 20px;
   padding: 10px 20px;
   background-color: #ff5555;
@@ -87,8 +98,14 @@ const StyledSignOutButton = styled.button`
   transition: background-color 0.3s ease-in-out;
   width: 160px;  
   border-radius: 10px;
+  text-align: center;
+  margin: 10px auto;
 
   &:hover {
     background-color: #e04242;
   }
+`
+
+const StyledOulet = styled.div`
+  height: 100vh;
 `

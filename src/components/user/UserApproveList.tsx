@@ -1,18 +1,13 @@
 import { useState, useEffect } from 'react'
-import { Table } from 'antd'
 import { userApproveApi } from '@/api/api'
-import styled from 'styled-components'
 import { UserApproveButton } from './UserApproveButton'
 import { AlignType } from 'rc-table/lib/interface'
+import { StyledBaseTable, StyledBaseSection } from 'styles/index'
 
-interface UserApprove {
-  username: string
-  email: string
-  hireDate: string
-}
 
-export const UserApproveForm = ({ userList }) => {
-  const [userApproveLists, setUserApproveLists] = useState<UserApprove[]>([])
+
+export const UserApproveList = ({ userList }) => {
+  const [userApproveLists, setUserApproveLists] = useState<UserApproveList[]>([])
 
   const userApprove = async () => {
     try {
@@ -34,7 +29,7 @@ export const UserApproveForm = ({ userList }) => {
     key: index,
     username: item.username,
     email: item.email,
-    hireDate: item.hireDate,
+    hireDate: item.hireDate.split('T')[0],
     approveButton: (
       <UserApproveButton
         email={item.email}
@@ -72,27 +67,16 @@ export const UserApproveForm = ({ userList }) => {
   ]
 
   return (
-    <StyledSection>
+    <StyledBaseSection>
       <span>승인요청</span>
-      <StyledTable
+      <StyledBaseTable
         dataSource={tableItemSources}
         columns={tableColumns}
-        pagination={{ pageSize: 5, simple: true }}
+        pagination={{ pageSize: 3, simple: true }}
         size="large"
       />
-    </StyledSection>
+    </StyledBaseSection>
   )
 }
 
-const StyledSection = styled.section`
-  margin-top: 40px;
-  text-align: center;
-  font-size: 30px;
-`
 
-const StyledTable = styled(Table)`
-  min-width: 800px;
-  max-width: 800px;
-  margin-left: 50px;
-  margin-top: 30px;
-`

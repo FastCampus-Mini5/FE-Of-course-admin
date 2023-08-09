@@ -1,4 +1,4 @@
-import { SignInForm } from "@/components/signin"
+import { SignInForm } from "components/signin"
 import bg from '@/assets/bgblue.png'
 import { styled } from "styled-components"
 

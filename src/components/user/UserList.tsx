@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { useContext, useEffect } from 'react'
-import { Table } from 'antd'
 import { userListApi } from '@/api/api'
 import { UserContext } from '@/contexts/index'
 import { AlignType } from 'rc-table/lib/interface'
 import { User } from '@/pages'
+import { StyledBaseTable, StyledBaseSection } from 'styles/index'
 
-export const UserForm = () => {
+export const UserList = () => {
   const { userLists, setUserLists } = useContext(UserContext)
   const userList = async () => {
     try {
@@ -15,8 +15,8 @@ export const UserForm = () => {
         setUserLists(
           res.data.response.content.sort(
             (a: User, b: User) =>
-              Number(a.hireDate.split('T')[0].replace(/-/g, '')) -
-              Number(b.hireDate.split('T')[0].replace(/-/g, ''))
+              Number(b.hireDate.split('T')[0].replace(/-/g, '')) -
+              Number(a.hireDate.split('T')[0].replace(/-/g, ''))
           )
         )
       }
@@ -72,15 +72,14 @@ export const UserForm = () => {
   ]
 
   return (
-    <>
+    <StyledBaseSection>
       <Styledspan>유저 리스트</Styledspan>
-      <StyledTable
+      <StyledBaseTable
         dataSource={tableItemSource}
         columns={itemColumns}
         pagination={{ simple: true, pageSize: 5 }}
-        size="small"
       />
-    </>
+    </StyledBaseSection>
   )
 }
 const Styledspan = styled.div`
@@ -89,9 +88,4 @@ const Styledspan = styled.div`
   margin-top: 40px;
 `
 
-const StyledTable = styled(Table)`
-  min-width: 800px;
-  max-width: 800px;
-  margin-left: 50px;
-  margin-top: 30px;
-`
+

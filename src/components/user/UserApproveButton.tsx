@@ -1,4 +1,5 @@
 import { ApproveSignUpApi, userApproveApi } from '@/api/api'
+import { styled } from 'styled-components'
 
 export const UserApproveButton = ({ email, onUserApporve, userList }) => {
   const handleClick = async () => {
@@ -15,5 +16,17 @@ export const UserApproveButton = ({ email, onUserApporve, userList }) => {
     }
   }
 
-  return <button onClick={handleClick}>승인</button>
+  return <StyledApproveButton onClick={handleClick}>승인</StyledApproveButton>
 }
+
+const StyledApproveButton = styled.button`
+  width: 40px;
+  height: 30px;
+  border-radius: 8px;
+  background-color: #56c1e9;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #2656f6;
+  }
+`

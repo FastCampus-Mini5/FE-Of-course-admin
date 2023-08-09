@@ -5,23 +5,17 @@ import { AlignType } from 'rc-table/lib/interface';
 import  styled from 'styled-components/';
 import { SelectMonth, SelectYear } from 'components/common/index'
 import { StyledBaseSection } from 'styles/index'
-interface Vacation {
-  username: string;
-  email: string;
-  reason: string;
-  createdAt: string;
-  startDate: string;
-  endDate: string
-}
 
-export const VacationForm = () => {
-  const [vacationLists, setVacationLists] = useState<Vacation[]>([])
+
+export const VacationList = () => {
+  const [vacationLists, setVacationLists] = useState<VacationList[]>([])
 
   const vacationList = async () =>{
     try{
       const res = await VacationApi()
       setVacationLists(res.data.response.content)
-      console.log(res)
+      setFilteredItems(res.data.response.content)
+      console.log(res.data.response.content)
     } catch(error) {
       console.error('error :' + error)
     }
@@ -30,6 +24,15 @@ export const VacationForm = () => {
   useEffect(() => {
     vacationList()
   }, [])
+
+  // 정렬
+  vacationLists
+    .sort((a, b) => {
+      const acc: any = a.startDate.split('T')[0].replace(/-/g, '') 
+      const cur: any = b.startDate.split('T')[0].replace(/-/g, '')
+      return cur - acc
+    })
+
 
   // 년도 선택 
   const [selectedYear, setSelectedYear] = useState<number>(new Date().getFullYear())
@@ -48,7 +51,7 @@ export const VacationForm = () => {
   }
 
   // 필터
-  const [filteredItems, setFilteredItems] = useState(vacationLists)
+  const [filteredItems, setFilteredItems] = useState<VacationList[]>([])
   const [searchValue, setSearchValue] = useState('')
 
   const handleInputChange = () => {
@@ -63,7 +66,7 @@ export const VacationForm = () => {
       setFilteredItems(vacationLists)
     }
   }
-  
+
   const handleSearch = () => {
     if( selectedYear ) {
       const filteredItems = vacationLists.filter(item => {
@@ -74,19 +77,18 @@ export const VacationForm = () => {
       setFilteredItems(filteredItems)
     }
   }
-  
+ 
   const handleAllSearch = () => {
     setFilteredItems(vacationLists)
   }
-
-
+  
   // table
   const tableItemSource = filteredItems.map((item, index) => ({
     key: index+1,
     username: item.username,
     email: item.email,
     reason: item.reason,
-    createdAt: item.createdAt.split('T')[0],
+    createdAt: item.createdAt.split('T')[0],setVacationLists,
     startDate: item.startDate.split('T')[0],
     endDate: item.endDate.split('T')[0]
   }))
@@ -192,6 +194,7 @@ const StyledAllSearchButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   align-items: center;
+  cursor: pointer;
 
   /* 마우스 호버 시 스타일 변경 */
   &:hover {
@@ -212,6 +215,7 @@ const StyledButton = styled.button`
   height: 35px;
   width: 70px;
   border-radius: 8px;
+  cursor: pointer;
 
 
   /* 아이콘 스타일 */

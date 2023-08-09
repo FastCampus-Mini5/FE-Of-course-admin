@@ -82,10 +82,8 @@ export const UserList = () => {
     </StyledBaseSection>
   )
 }
-const Styledspan = styled.div`
+const Styledspan = styled.span`
   text-align: center;
   font-size: 30px;
   margin-top: 40px;
 `
-
-

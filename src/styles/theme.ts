@@ -6,6 +6,7 @@ export const theme = {
     inputFocused: '#f4f4f4',
     buttonGrey: '#ccc',
     sectionGrey: '#e7eaf4',
-    borderGrey: '#d9d9d9'
+    borderGrey: '#d9d9d9',
+    primaryRed: '#FF1818'
   }
 }

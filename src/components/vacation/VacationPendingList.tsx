@@ -2,11 +2,12 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { VacationPendingApi, VacationProceedApi } from '@/api/api'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
-import { AlignType } from 'rc-table/lib/interface';
-
+import { AlignType } from 'rc-table/lib/interface'
 
 export const VacationPendingList = () => {
-  const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendingList[]>([])
+  const [vacationPendingLists, setVacationPendingLists] = useState<
+    VacationPendingList[]
+  >([])
 
   const vacationPendingList = async () => {
     try {
@@ -14,7 +15,7 @@ export const VacationPendingList = () => {
       setVacationPendingLists(res.data.response.content)
       console.log(res)
     } catch (error) {
-      console.error('error : ' + error) 
+      console.error('error : ' + error)
     }
   }
 
@@ -22,10 +23,9 @@ export const VacationPendingList = () => {
     vacationPendingList()
   }, [])
 
-
   // table
   const tableItemSource = vacationPendingLists.map((item, index) => ({
-    key: index+1,
+    key: index + 1,
     username: item.username,
     email: item.email,
     createdAt: item.createdAt.split('T')[0],
@@ -33,10 +33,10 @@ export const VacationPendingList = () => {
     endDate: item.endDate.split('T')[0],
     approveButton: (
       <StyledButton>
-        <StyledApproveButton onClick = {() => handleApprove(item.id)}>
+        <StyledApproveButton onClick={() => handleApprove(item.id)}>
           승인
         </StyledApproveButton>
-        <StyledRejectButton onClick = {() => handleReject(item.id)}>
+        <StyledRejectButton onClick={() => handleReject(item.id)}>
           거절
         </StyledRejectButton>
       </StyledButton>
@@ -48,7 +48,7 @@ export const VacationPendingList = () => {
       title: '번호',
       dataIndex: 'key',
       key: 'key',
-      align: 'center' as AlignType,
+      align: 'center' as AlignType
     },
     {
       title: '성명',
@@ -61,31 +61,31 @@ export const VacationPendingList = () => {
       title: '아이디',
       dataIndex: 'email',
       key: 'email',
-      align: 'center' as AlignType,
+      align: 'center' as AlignType
     },
     {
       title: '신청일',
       dataIndex: 'createdAt',
       key: 'createdAt',
-      align: 'center' as AlignType,
+      align: 'center' as AlignType
     },
     {
       title: '시작일',
       dataIndex: 'startDate',
       key: 'startDate',
-      align: 'center' as AlignType,
+      align: 'center' as AlignType
     },
     {
       title: '종료일',
       dataIndex: 'endDate',
       key: 'endDate',
-      align: 'center' as AlignType,
+      align: 'center' as AlignType
     },
     {
       title: '확인',
       dataIndex: 'approveButton',
       key: 'approveButton',
-      align: 'center' as AlignType,
+      align: 'center' as AlignType
     }
   ]
 
@@ -95,17 +95,17 @@ export const VacationPendingList = () => {
       await VacationProceedApi(id, 'APPROVE')
       await vacationPendingList()
       alert('승인되었습니다.')
-    } catch(error) {
+    } catch (error) {
       console.log('error : ' + error)
     }
   }
 
-  const  handleReject = async(id: number) => {
+  const handleReject = async (id: number) => {
     try {
       await VacationProceedApi(id, 'REJECT')
       await vacationPendingList()
       alert('거절되었습니다.')
-    } catch(error) {
+    } catch (error) {
       console.error('error : ' + error)
     }
   }
@@ -123,32 +123,38 @@ export const VacationPendingList = () => {
 
 const StyledButton = styled.div`
   display: flex;
-  width: 100px;
   display: inline-block;
   text-align: center;
+  flex-wrap: nowrap;
 `
 
-const StyledApproveButton = styled.button`
-  width: 40px;
+export const StyledApproveButton = styled.button`
+  width: 60px;
   height: 30px;
   border-radius: 8px;
-  background-color: #56c1e9;
+  background-color: #fff;
+  border: 1px solid ${props => props.theme.colors.primaryBlue};
+  color: ${props => props.theme.colors.primaryBlue};
   cursor: pointer;
-
   &:hover {
-    background-color: #2656f6;
+    color: #fff;
+    background-color: ${props => props.theme.colors.primaryBlue};
+    transition: all.2s;
   }
 `
 
-const StyledRejectButton = styled.button`
-  margin-left: 10px;
-  background: #ff6666;
-  width: 40px;
+export const StyledRejectButton = styled.button`
+  margin-left: 20px;
+  background: #fff;
+  width: 60px;
   height: 30px;
   border-radius: 8px;
+  border: 1px solid ${props => props.theme.colors.primaryRed};
+  color: ${props => props.theme.colors.primaryRed};
   cursor: pointer;
-
   &:hover {
-    background-color: #e04242;
+    color: #fff;
+    background-color: ${props => props.theme.colors.primaryRed};
+    transition: all.2s;
   }
 `

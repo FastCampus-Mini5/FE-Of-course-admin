@@ -2,8 +2,16 @@ import styled from 'styled-components'
 import { Table } from 'antd'
 
 export const StyledBaseSelect = styled.select`
-  margin-right: 10px;
+  margin-right: 15px;
+  border-radius: 6px;
+  border: 1px solid black;
+  text-align: center;
+  width: 80px;
+  background-color: #fff;
   height: 35px;
+`
+export const StyledMonthSelect = styled(StyledBaseSelect)`
+  width: 50px;
 `
 
 export const StyledBaseSection = styled.section`
@@ -12,6 +20,10 @@ export const StyledBaseSection = styled.section`
   font-size: 30px;
   text-align: center;
   margin-top: 40px;
+  color: #374984;
+  span {
+    font-weight: 700;
+  }
 `
 
 export const StyledBaseTable = styled(Table)`

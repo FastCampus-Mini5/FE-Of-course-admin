@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { DutyPeindingListsApi, DutyProceedApi } from '@/api/api'
-import { AlignType } from 'rc-table/lib/interface';
+import { AlignType } from 'rc-table/lib/interface'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
+import { StyledRejectButton, StyledApproveButton } from '@/components'
 
 export const DutyPendingList = () => {
-  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPendingList[]>([])
+  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPendingList[]>(
+    []
+  )
 
   const dutyPendingList = async () => {
     try {
@@ -18,22 +21,22 @@ export const DutyPendingList = () => {
 
   useEffect(() => {
     dutyPendingList()
-  },[])
+  }, [])
 
   //table
 
   const tableItemSource = dutyPendingLists.map((item, index) => ({
-    key: index+1,
+    key: index + 1,
     ueername: item.username,
     email: item.email,
     createdDate: item.createdDate.split('T')[0],
     dutyDate: item.dutyDate.split('T')[0],
     approveButton: (
       <StyledButton>
-        <StyledApproveButton onClick = {() => handleApprove(item.id)}>
+        <StyledApproveButton onClick={() => handleApprove(item.id)}>
           승인
         </StyledApproveButton>
-        <StyledRejectButton onClick = {() => handleReject(item.id)}>
+        <StyledRejectButton onClick={() => handleReject(item.id)}>
           거절
         </StyledRejectButton>
       </StyledButton>
@@ -80,22 +83,22 @@ export const DutyPendingList = () => {
   ]
 
   // 승인, 거절 버튼
-  const handleApprove = async(id: number) => {
+  const handleApprove = async (id: number) => {
     try {
       await DutyProceedApi(id, 'APPROVE')
       await dutyPendingList()
       alert('승인되었습니다.')
-    } catch(error) {
+    } catch (error) {
       console.error('error : ' + error)
     }
   }
 
-  const handleReject = async(id: number) => {
+  const handleReject = async (id: number) => {
     try {
       await DutyProceedApi(id, 'REJECT')
       await dutyPendingList()
       alert('거절되었습니다.')
-    } catch(error) {
+    } catch (error) {
       console.error('error : ' + error)
     }
   }
@@ -111,35 +114,8 @@ export const DutyPendingList = () => {
   )
 }
 
-
 const StyledButton = styled.div`
   display: flex;
-  gap: 10px;
-  width: 100px;
+  justify-content: center;
   text-align: center;
-`
-
-const StyledApproveButton = styled.button`
-  width: 40px;
-  height: 30px;
-  border-radius: 8px;
-  background-color: #56c1e9;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #2656f6;
-  }
-`
-
-const StyledRejectButton = styled.button`
-  margin-left: 10px;
-  background: #ff6666;
-  width: 40px;
-  height: 30px;
-  border-radius: 8px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #e04242;
-  }
 `

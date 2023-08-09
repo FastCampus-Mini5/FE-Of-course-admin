@@ -20,13 +20,17 @@ export const UserApproveButton = ({ email, onUserApporve, userList }) => {
 }
 
 const StyledApproveButton = styled.button`
-  width: 40px;
+  width: 90px;
   height: 30px;
-  border-radius: 8px;
-  background-color: #56c1e9;
+  border: 1px solid ${props => props.theme.colors.primaryBlue};
+  color: ${props => props.theme.colors.primaryBlue};
+  /* font-weight: 400; */
+  border-radius: 6px;
+  background-color: #fff;
   cursor: pointer;
-
   &:hover {
-    background-color: #2656f6;
+    background-color: ${props => props.theme.colors.primaryBlue};
+    color: #fff;
+    transition: all 0.1s ease-in;
   }
 `

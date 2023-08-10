@@ -1,18 +1,23 @@
 import styled from 'styled-components'
 import { useContext, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { userListApi } from '@/api/api'
 import { UserContext } from '@/contexts/index'
 import { AlignType } from 'rc-table/lib/interface'
-import { User } from '@/pages'
 import { StyledBaseTable, StyledBaseSection } from 'styles/index'
+import { commonTexts, userTexts } from '@/constants/index'
 
 export const UserList = () => {
   const { userLists, setUserLists } = useContext(UserContext)
+  const navigate = useNavigate()
+
+  // 유저 리스트 호출
   const userList = async () => {
     try {
       const res = await userListApi()
       if (res) {
         setUserLists(
+          // 입사일 기준으로 내림차순 정렬
           res.data.response.content.sort(
             (a: User, b: User) =>
               Number(b.hireDate.split('T')[0].replace(/-/g, '')) -
@@ -26,10 +31,15 @@ export const UserList = () => {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      alert(commonTexts.signinReject)
+      navigate('/')
+    }
     userList()
   }, [])
 
-  // table
+  // table 생성
   const tableItemSource = userLists.map((item, index) => ({
     key: index + 1,
     username: item.username,
@@ -40,31 +50,31 @@ export const UserList = () => {
 
   const itemColumns = [
     {
-      title: '번호',
+      title: commonTexts.key,
       dataIndex: 'key',
       key: 'key',
       align: 'center' as AlignType
     },
     {
-      title: '사원명',
+      title: commonTexts.name,
       dataIndex: 'username',
       key: 'username',
       align: 'center' as AlignType
     },
     {
-      title: '아이디',
+      title: commonTexts.email,
       dataIndex: 'email',
       key: 'email',
       align: 'center' as AlignType
     },
     {
-      title: '입사일',
+      title: userTexts.hireDate,
       dataIndex: 'hireDate',
       key: 'hireDate',
       align: 'center' as AlignType
     },
     {
-      title: '잔여연차',
+      title: userTexts.remainVacation,
       dataIndex: 'remainVacation',
       key: 'remainVacation',
       align: 'center' as AlignType
@@ -73,7 +83,7 @@ export const UserList = () => {
 
   return (
     <StyledBaseSection>
-      <Styledspan>유저 리스트</Styledspan>
+      <Styledspan>{userTexts.userList}</Styledspan>
       <StyledBaseTable
         dataSource={tableItemSource}
         columns={itemColumns}

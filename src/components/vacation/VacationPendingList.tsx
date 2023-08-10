@@ -1,29 +1,34 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { VacationPendingApi, VacationProceedApi } from '@/api/api'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { AlignType } from 'rc-table/lib/interface'
+import { commonTexts, vacationTexts } from '@/constants/index'
 
 export const VacationPendingList = () => {
-  const [vacationPendingLists, setVacationPendingLists] = useState<
-    VacationPendingList[]
-  >([])
+  const [vacationPendingLists, setVacationPendingLists] = useState<VacationPendingList[]>([])
+  const navigate = useNavigate()
 
   const vacationPendingList = async () => {
     try {
       const res = await VacationPendingApi()
       setVacationPendingLists(res.data.response.content)
-      console.log(res)
     } catch (error) {
       console.error('error : ' + error)
     }
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      alert(commonTexts.signinReject)
+      navigate('/')
+    }
     vacationPendingList()
   }, [])
 
-  // table
+  // table 생성
   const tableItemSource = vacationPendingLists.map((item, index) => ({
     key: index + 1,
     username: item.username,
@@ -34,55 +39,55 @@ export const VacationPendingList = () => {
     approveButton: (
       <StyledButton>
         <StyledApproveButton onClick={() => handleApprove(item.id)}>
-          승인
+          {commonTexts.approve}
         </StyledApproveButton>
         <StyledRejectButton onClick={() => handleReject(item.id)}>
-          거절
+          {commonTexts.reject}
         </StyledRejectButton>
       </StyledButton>
-    )
-  }))
+      )
+    }))
 
   const tableColumns = [
     {
-      title: '번호',
+      title: commonTexts.key,
       dataIndex: 'key',
       key: 'key',
       align: 'center' as AlignType
     },
     {
-      title: '성명',
+      title: commonTexts.name,
       dataIndex: 'username',
       key: 'username',
       align: 'center' as AlignType,
       width: 100
     },
     {
-      title: '아이디',
+      title: commonTexts.email,
       dataIndex: 'email',
       key: 'email',
       align: 'center' as AlignType
     },
     {
-      title: '신청일',
+      title: vacationTexts.createdAt,
       dataIndex: 'createdAt',
       key: 'createdAt',
       align: 'center' as AlignType
     },
     {
-      title: '시작일',
+      title: vacationTexts.startDate,
       dataIndex: 'startDate',
       key: 'startDate',
       align: 'center' as AlignType
     },
     {
-      title: '종료일',
+      title: vacationTexts.endDate,
       dataIndex: 'endDate',
       key: 'endDate',
       align: 'center' as AlignType
     },
     {
-      title: '확인',
+      title: commonTexts.pending,
       dataIndex: 'approveButton',
       key: 'approveButton',
       align: 'center' as AlignType
@@ -94,7 +99,7 @@ export const VacationPendingList = () => {
     try {
       await VacationProceedApi(id, 'APPROVE')
       await vacationPendingList()
-      alert('승인되었습니다.')
+      alert(commonTexts.approveText)
     } catch (error) {
       console.log('error : ' + error)
     }
@@ -104,7 +109,7 @@ export const VacationPendingList = () => {
     try {
       await VacationProceedApi(id, 'REJECT')
       await vacationPendingList()
-      alert('거절되었습니다.')
+      alert(commonTexts.rejectText)
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -112,7 +117,7 @@ export const VacationPendingList = () => {
 
   return (
     <StyledBaseSection>
-      <span>연차 요청 리스트</span>
+      <span>{vacationTexts.vacataionPendingList}</span>
       <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}

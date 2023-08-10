@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Table } from 'antd'
 import { VacationApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface'
@@ -12,10 +13,13 @@ import {
   StyledBtn,
   NavContainer
 } from '@/components'
+import { commonTexts, vacationTexts } from '@/constants/index'
 
 export const VacationList = () => {
   const [vacationLists, setVacationLists] = useState<VacationList[]>([])
+  const navigate = useNavigate()
 
+  // 연차 리스트 호출
   const vacationList = async () => {
     try {
       const res = await VacationApi()
@@ -28,10 +32,15 @@ export const VacationList = () => {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      alert(commonTexts.signinReject)
+      navigate('/')
+    }
     vacationList()
   }, [])
 
-  // 정렬
+  // 정렬- 연차 시작일 기준으로 내림차순 정렬
   vacationLists.sort((a, b) => {
     const acc: any = a.startDate.split('T')[0].replace(/-/g, '')
     const cur: any = b.startDate.split('T')[0].replace(/-/g, '')
@@ -56,7 +65,7 @@ export const VacationList = () => {
     setSelectedMonth(month)
   }
 
-  // 필터
+  // 필터 - 이름, 년, 월 선택으로 필터
   const [filteredItems, setFilteredItems] = useState<VacationList[]>([])
   const [searchValue, setSearchValue] = useState('')
 
@@ -87,7 +96,7 @@ export const VacationList = () => {
     setFilteredItems(vacationLists)
   }
 
-  // table
+  // table 생성
   const tableItemSource = filteredItems.map((item, index) => ({
     key: index + 1,
     username: item.username,
@@ -101,33 +110,33 @@ export const VacationList = () => {
 
   const tableColumns = [
     {
-      title: '번호',
+      title: commonTexts.key,
       dataIndex: 'key',
       key: 'key',
       align: 'center' as AlignType,
       sorter: (a, b) => a - b
     },
     {
-      title: '성명',
+      title: commonTexts.name,
       dataIndex: 'username',
       key: 'username',
       align: 'center' as AlignType,
       width: '100'
     },
     {
-      title: '아이디',
+      title: commonTexts.email,
       dataIndex: 'email',
       key: 'email',
       align: 'center' as AlignType
     },
     {
-      title: '사유',
+      title: vacationTexts.reason,
       dataIndex: 'reason',
       key: 'reason',
       align: 'center' as AlignType
     },
     {
-      title: '신청일',
+      title: vacationTexts.createdAt,
       dataIndex: 'createdAt',
       key: 'createdAt',
       align: 'center' as AlignType,
@@ -136,7 +145,7 @@ export const VacationList = () => {
         b.createdAt.split('T')[0].replace(/-/g, '')
     },
     {
-      title: '시작일',
+      title: vacationTexts.startDate,
       dataIndex: 'startDate',
       key: 'startDate',
       align: 'center' as AlignType,
@@ -145,7 +154,7 @@ export const VacationList = () => {
         b.startDate.split('T')[0].replace(/-/g, '')
     },
     {
-      title: '종료일',
+      title: vacationTexts.endDate,
       dataIndex: 'endDate',
       key: 'endDate',
       align: 'center' as AlignType,
@@ -157,16 +166,16 @@ export const VacationList = () => {
 
   return (
     <StyledBaseSection>
-      <span>연차 리스트</span>
+      <span>{vacationTexts.vacationList}</span>
       <NavContainer>
         <StyledSelectContainer>
           <StyledAllSearchButton onClick={handleAllSearch}>
-            전체
+            {commonTexts.all}
           </StyledAllSearchButton>
           <StyledInput
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}
-            placeholder="성명"
+            placeholder={commonTexts.name}
             onKeyDown={event => {
               if (event.key === 'Enter') {
                 handleInputChange() // Enter 키가 눌렸을 때 검색 실행
@@ -177,7 +186,7 @@ export const VacationList = () => {
             onClick={() => {
               handleInputChange()
             }}>
-            검색
+            {commonTexts.search}
           </StyledBtn>
         </StyledSelectContainer>
 
@@ -190,7 +199,9 @@ export const VacationList = () => {
             selectedMonth={selectedMonth}
             onMonthChange={handleMonthChange}
           />
-          <StyledBtn onClick={handleSearch}>검색</StyledBtn>
+          <StyledBtn onClick={handleSearch}>
+            {commonTexts.search}
+          </StyledBtn>
         </StyledSearchButtonContainer>
       </NavContainer>
 

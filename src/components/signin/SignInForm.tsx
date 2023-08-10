@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import { useRef, useEffect, useState } from 'react'
-import { signinTexts } from 'components/index'
+import { signinTexts } from '@/constants/index'
 import { signIn } from '@/api/account'
 import { InputField } from 'components/index'
 import { AxiosError, AxiosHeaders, AxiosResponse } from 'axios'

@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { SelectMonth, SelectYear } from 'components/common/index'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { DutyListApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface'
 import { styled } from 'styled-components'
+import { dutyTexts, commonTexts } from '@/constants/index'
 
 export const DutyList = () => {
   const [dutyLists, setDutyLists] = useState<DutyList[]>([])
-
+  const navigate = useNavigate()
+  
+  // 당직 리스트 호출
   const DutyList = async () => {
     try {
       const res = await DutyListApi()
@@ -19,10 +23,16 @@ export const DutyList = () => {
   }
 
   useEffect(() => {
+    // 로컬 스토리지에 토큰 값이 없을 경우 알림창으로 알려주고 로그인페이지로 이동
+    const token = localStorage.getItem('token')
+    if(!token) {
+      alert(commonTexts.signinReject)
+      navigate('/')
+    }
     DutyList()
   }, [])
 
-  // 정렬
+  // 정렬- 당직일 기준으로 내림차순 정렬
   dutyLists.sort((a, b) => {
     const acc: any = a.dutyDate.split('T')[0].replace(/-/g, '')
     const cur: any = b.dutyDate.split('T')[0].replace(/-/g, '')
@@ -48,7 +58,7 @@ export const DutyList = () => {
     setSelectedMonth(month)
   }
 
-  // 필터
+  // 필터 - 이름, 월, 년도에 따라 필터
   const [filteredItems, setFilteredItems] = useState(dutyLists)
   const [searchValue, setSearchValue] = useState('')
 
@@ -79,8 +89,7 @@ export const DutyList = () => {
     setFilteredItems(dutyLists)
   }
 
-  // table
-
+  // table 생성
   const tableItemSource = filteredItems.map((item, index) => ({
     key: index + 1,
     username: item.username,
@@ -91,7 +100,7 @@ export const DutyList = () => {
 
   const tableColumns = [
     {
-      title: '번호',
+      title: commonTexts.key,
       dataIndex: 'key',
       key: 'key',
       align: 'center' as AlignType,
@@ -99,19 +108,19 @@ export const DutyList = () => {
       sorter: (a, b) => a - b
     },
     {
-      title: '성명',
+      title: commonTexts.name,
       dataIndex: 'username',
       key: 'username',
       align: 'center' as AlignType
     },
     {
-      title: '아이디',
+      title: commonTexts.email,
       dataIndex: 'email',
       key: 'email',
       align: 'center' as AlignType
     },
     {
-      title: '신청일',
+      title: dutyTexts.createdDate,
       dataIndex: 'createdDate',
       key: 'createdDate',
       align: 'center' as AlignType,
@@ -120,7 +129,7 @@ export const DutyList = () => {
         b.createdDate.split('T')[0].replace(/-/g, '')
     },
     {
-      title: '당직일',
+      title: dutyTexts.dutyDate,
       dataIndex: 'dutyDate',
       key: 'dutyDate',
       align: 'center' as AlignType,
@@ -132,16 +141,16 @@ export const DutyList = () => {
 
   return (
     <StyledBaseSection>
-      <StyledSpan>당직 리스트</StyledSpan>
+      <StyledSpan>{dutyTexts.dutyList}</StyledSpan>
       <NavContainer>
         <StyledSelectContainer>
           <StyledAllSearchButton onClick={handleAllSearch}>
-            전체
+            {commonTexts.all}
           </StyledAllSearchButton>
           <StyledInput
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}
-            placeholder="성명"
+            placeholder={commonTexts.name}
             onKeyDown={event => {
               if (event.key === 'Enter') {
                 handleInputChange() // Enter 키가 눌렸을 때 검색 실행
@@ -152,7 +161,7 @@ export const DutyList = () => {
             onClick={() => {
               handleInputChange()
             }}>
-            검색
+            {commonTexts.search}
           </StyledBtn>
         </StyledSelectContainer>
 
@@ -165,7 +174,7 @@ export const DutyList = () => {
             selectedMonth={selectedMonth}
             onMonthChange={handleMonthChange}
           />
-          <StyledBtn onClick={handleSearch}>검색</StyledBtn>
+          <StyledBtn onClick={handleSearch}>{commonTexts.search}</StyledBtn>
         </StyledSearchButtonContainer>
       </NavContainer>
 

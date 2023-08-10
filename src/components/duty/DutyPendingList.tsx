@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import { DutyPeindingListsApi, DutyProceedApi } from '@/api/api'
 import { AlignType } from 'rc-table/lib/interface'
 import { StyledBaseSection, StyledBaseTable } from 'styles/index'
 import { StyledRejectButton, StyledApproveButton } from '@/components'
+import { commonTexts, dutyTexts } from '@/constants/index'
 
 export const DutyPendingList = () => {
-  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPendingList[]>(
-    []
-  )
+  const [dutyPendingLists, setDutyPendingLists] = useState<DutyPendingList[]>([])
+  const navigate = useNavigate()
 
+  // 당직 요청 리스트 호출
   const dutyPendingList = async () => {
     try {
       const res = await DutyPeindingListsApi()
@@ -20,11 +22,15 @@ export const DutyPendingList = () => {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      alert(commonTexts.signinReject)
+      navigate('/')
+    }
     dutyPendingList()
   }, [])
 
-  //table
-
+  // table 생성
   const tableItemSource = dutyPendingLists.map((item, index) => ({
     key: index + 1,
     ueername: item.username,
@@ -34,10 +40,10 @@ export const DutyPendingList = () => {
     approveButton: (
       <StyledButton>
         <StyledApproveButton onClick={() => handleApprove(item.id)}>
-          승인
+          {commonTexts.approve}
         </StyledApproveButton>
         <StyledRejectButton onClick={() => handleReject(item.id)}>
-          거절
+          {commonTexts.reject}
         </StyledRejectButton>
       </StyledButton>
     )
@@ -45,37 +51,37 @@ export const DutyPendingList = () => {
 
   const tableColumns = [
     {
-      title: '번호',
+      title: commonTexts.key,
       dataIndex: 'key',
       key: 'key',
       align: 'center' as AlignType
     },
     {
-      title: '성명',
+      title: commonTexts.name,
       dataIndex: 'ueername',
       key: 'ueername',
       align: 'center' as AlignType
     },
     {
-      title: '아이디',
+      title: commonTexts.email,
       dataIndex: 'email',
       key: 'email',
       align: 'center' as AlignType
     },
     {
-      title: '신청일',
+      title: dutyTexts.createdDate,
       dataIndex: 'createdDate',
       key: 'createdDate',
       align: 'center' as AlignType
     },
     {
-      title: '당직일',
+      title: dutyTexts.dutyDate,
       dataIndex: 'dutyDate',
       key: 'dutyDate',
       align: 'center' as AlignType
     },
     {
-      title: '승인여부',
+      title: commonTexts.pending,
       dataIndex: 'approveButton',
       key: 'approveButton',
       align: 'center' as AlignType
@@ -87,7 +93,7 @@ export const DutyPendingList = () => {
     try {
       await DutyProceedApi(id, 'APPROVE')
       await dutyPendingList()
-      alert('승인되었습니다.')
+      alert(commonTexts.approveText)
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -97,7 +103,7 @@ export const DutyPendingList = () => {
     try {
       await DutyProceedApi(id, 'REJECT')
       await dutyPendingList()
-      alert('거절되었습니다.')
+      alert(commonTexts.rejectText)
     } catch (error) {
       console.error('error : ' + error)
     }
@@ -105,7 +111,7 @@ export const DutyPendingList = () => {
 
   return (
     <StyledBaseSection>
-      <span>당직 요청 리스트</span>
+      <span>{dutyTexts.dutyPendingList}</span>
       <StyledBaseTable
         dataSource={tableItemSource}
         columns={tableColumns}

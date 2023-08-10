@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { userApproveApi } from '@/api/api'
 import { UserApproveButton } from './UserApproveButton'
 import { AlignType } from 'rc-table/lib/interface'
 import { StyledBaseTable, StyledBaseSection } from 'styles/index'
+import { commonTexts, userTexts } from '@/constants'
 
 
 
 export const UserApproveList = ({ userList }) => {
   const [userApproveLists, setUserApproveLists] = useState<UserApproveList[]>([])
+  const navigate = useNavigate()
 
+  // 회원가입 요청 리스트 호출
   const userApprove = async () => {
     try {
       const res = await userApproveApi()
@@ -21,10 +25,15 @@ export const UserApproveList = ({ userList }) => {
   }
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      alert(commonTexts.signinReject)
+      navigate('/')
+    }
     userApprove()
   }, [])
 
-  // table
+  // table 생성
   const tableItemSources = userApproveLists.map((item, index) => ({
     key: index,
     username: item.username,
@@ -41,25 +50,25 @@ export const UserApproveList = ({ userList }) => {
 
   const tableColumns = [
     {
-      title: '사원명',
+      title: commonTexts.name,
       dataIndex: 'username',
       key: 'username',
       align: 'center' as AlignType
     },
     {
-      title: '아이디',
+      title: commonTexts.email,
       dataIndex: 'email',
       key: 'email',
       align: 'center' as AlignType
     },
     {
-      title: '입사일',
+      title: userTexts.hireDate,
       dataIndex: 'hireDate',
       key: 'hireDate',
       align: 'center' as AlignType
     },
     {
-      title: '승인여부',
+      title: commonTexts.pending,
       dataIndex: 'approveButton',
       key: 'approveButton',
       align: 'center' as AlignType
@@ -68,7 +77,7 @@ export const UserApproveList = ({ userList }) => {
 
   return (
     <StyledBaseSection>
-      <span>승인요청</span>
+      <span>{userTexts.signupPending}</span>
       <StyledBaseTable
         dataSource={tableItemSources}
         columns={tableColumns}

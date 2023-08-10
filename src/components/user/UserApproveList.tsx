@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userApproveApi } from '@/api/api'
-import { UserApproveButton } from './UserApproveButton'
-import { AlignType } from 'rc-table/lib/interface'
-import { StyledBaseTable, StyledBaseSection } from 'styles/index'
+import { StyledBaseSection } from 'styles/index'
 import { commonTexts, userTexts } from '@/constants'
+import { UserApproveListTable } from 'components/user/index'
 
 
 
-export const UserApproveList = ({ userList }) => {
+export const UserApproveList = ( { userList } ) => {
   const [userApproveLists, setUserApproveLists] = useState<UserApproveList[]>([])
   const navigate = useNavigate()
 
@@ -33,57 +32,12 @@ export const UserApproveList = ({ userList }) => {
     userApprove()
   }, [])
 
-  // table 생성
-  const tableItemSources = userApproveLists.map((item, index) => ({
-    key: index,
-    username: item.username,
-    email: item.email,
-    hireDate: item.hireDate.split('T')[0],
-    approveButton: (
-      <UserApproveButton
-        email={item.email}
-        onUserApporve={userApprove}
-        userList={userList}
-      />
-    )
-  }))
 
-  const tableColumns = [
-    {
-      title: commonTexts.name,
-      dataIndex: 'username',
-      key: 'username',
-      align: 'center' as AlignType
-    },
-    {
-      title: commonTexts.email,
-      dataIndex: 'email',
-      key: 'email',
-      align: 'center' as AlignType
-    },
-    {
-      title: userTexts.hireDate,
-      dataIndex: 'hireDate',
-      key: 'hireDate',
-      align: 'center' as AlignType
-    },
-    {
-      title: commonTexts.pending,
-      dataIndex: 'approveButton',
-      key: 'approveButton',
-      align: 'center' as AlignType
-    }
-  ]
 
   return (
     <StyledBaseSection>
       <span>{userTexts.signupPending}</span>
-      <StyledBaseTable
-        dataSource={tableItemSources}
-        columns={tableColumns}
-        pagination={{ pageSize: 3, simple: true }}
-        size="large"
-      />
+      <UserApproveListTable userApproveLists = {userApproveLists} userApprove = {userApprove} userList = {userList}/>
     </StyledBaseSection>
   )
 }

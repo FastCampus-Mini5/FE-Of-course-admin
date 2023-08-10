@@ -1,8 +1,8 @@
 import { ApproveSignUpApi, userApproveApi } from '@/api/api'
-import { styled } from 'styled-components'
-import { commonTexts} from '@/constants/index'
+import styled from 'styled-components'
+import { commonTexts } from '@/constants/index'
 
-export const UserApproveButton = ({ email, onUserApporve, userList }) => {
+export const UserApproveButton = ({ email, onUserApprove, userList }) => {
 
   // 버튼 클릭시 실행
   const handleClick = async () => {
@@ -11,15 +11,20 @@ export const UserApproveButton = ({ email, onUserApporve, userList }) => {
       const userApporve = await userApproveApi()
       // 여기에서 승인 완료 후의 작업을 수행할 수 있습니다.
 
-      onUserApporve(userApporve)
-      userList(userApporve)
+      onUserApprove(userApporve)
+      userList()
       alert(commonTexts.approveText)
     } catch (error) {
       console.error('error : ' + error)
     }
   }
 
-  return <StyledApproveButton onClick={handleClick}>{commonTexts.approve}</StyledApproveButton>
+  return (
+    <StyledApproveButton onClick={handleClick}>
+      {commonTexts.approve}
+    </StyledApproveButton>
+  ) 
+
 }
 
 const StyledApproveButton = styled.button`

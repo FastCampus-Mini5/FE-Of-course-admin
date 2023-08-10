@@ -3,9 +3,9 @@ import { useContext, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { userListApi } from '@/api/api'
 import { UserContext } from '@/contexts/index'
-import { AlignType } from 'rc-table/lib/interface'
-import { StyledBaseTable, StyledBaseSection } from 'styles/index'
+import { StyledBaseSection } from 'styles/index'
 import { commonTexts, userTexts } from '@/constants/index'
+import { UserListTable } from '@/components/user/index'
 
 export const UserList = () => {
   const { userLists, setUserLists } = useContext(UserContext)
@@ -39,56 +39,12 @@ export const UserList = () => {
     userList()
   }, [])
 
-  // table 생성
-  const tableItemSource = userLists.map((item, index) => ({
-    key: index + 1,
-    username: item.username,
-    email: item.email,
-    hireDate: item.hireDate.split('T')[0],
-    remainVacation: item.remainVacation
-  }))
 
-  const itemColumns = [
-    {
-      title: commonTexts.key,
-      dataIndex: 'key',
-      key: 'key',
-      align: 'center' as AlignType
-    },
-    {
-      title: commonTexts.name,
-      dataIndex: 'username',
-      key: 'username',
-      align: 'center' as AlignType
-    },
-    {
-      title: commonTexts.email,
-      dataIndex: 'email',
-      key: 'email',
-      align: 'center' as AlignType
-    },
-    {
-      title: userTexts.hireDate,
-      dataIndex: 'hireDate',
-      key: 'hireDate',
-      align: 'center' as AlignType
-    },
-    {
-      title: userTexts.remainVacation,
-      dataIndex: 'remainVacation',
-      key: 'remainVacation',
-      align: 'center' as AlignType
-    }
-  ]
 
   return (
     <StyledBaseSection>
       <Styledspan>{userTexts.userList}</Styledspan>
-      <StyledBaseTable
-        dataSource={tableItemSource}
-        columns={itemColumns}
-        pagination={{ simple: true, pageSize: 5 }}
-      />
+      <UserListTable userLists = {userLists}/>
     </StyledBaseSection>
   )
 }

@@ -5,6 +5,7 @@ interface SelectYearProps {
   onYearChange : (year) => void
 }
 
+// 현재 년 기준으로 +-10년 배열 생성
 const currentYear = new Date().getFullYear()
 const startYear = currentYear - 10
 const endYear = currentYear + 10
@@ -15,7 +16,6 @@ for ( let year = startYear; year <= endYear; year++) {
 }
 
 export const SelectYear: React.FC<SelectYearProps> = ({selectedYear, onYearChange}) => {
-
 
   const handleChange = (event) => {
     const newSelectedYear = parseInt(event.target.value);

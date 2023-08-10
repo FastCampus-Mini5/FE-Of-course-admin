@@ -1,2 +1,4 @@
-export * from 'components/duty/DutyForm'
-export * from 'components/duty/DutyPendingForm'
+export * from '@/components/duty/DutyList'
+export * from '@/components/duty/DutyListTable'
+export * from '@/components/duty/DutyPendingList'
+export * from '@/components/duty/DutyPendingListTable'

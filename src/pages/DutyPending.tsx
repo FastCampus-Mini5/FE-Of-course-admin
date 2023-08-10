@@ -1,10 +1,10 @@
-import { DutyPendingForm } from "components/duty"
+import { DutyPendingList } from "components/duty/index"
 
 
 export const DutyPending = () => {
   return (
     <>
-      <DutyPendingForm />
+      <DutyPendingList />
     </>
   )
 }

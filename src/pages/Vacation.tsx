@@ -1,11 +1,11 @@
-import {VacationForm} from "@/components/vacation/VacationForm"
+import {VacationList} from "components/vacation/index"
 
 export const Vacation = () => {
 
 
   return (
     <>
-      <VacationForm />
+      <VacationList />
     </>
   )
 }

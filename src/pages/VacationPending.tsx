@@ -1,9 +1,9 @@
-import {VacationPendingForm} from "@/components/vacation/VacationPendingForm"
+import {VacationPendingList} from "components/vacation/index"
 
 export const VacationPending = () => {
   return (
     <>
-      <VacationPendingForm />
+      <VacationPendingList />
     </>
   )
 }

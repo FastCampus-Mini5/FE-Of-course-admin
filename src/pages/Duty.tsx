@@ -1,9 +1,9 @@
-import {DutyForm} from "components/duty"
+import { DutyList } from "components/duty/index"
 
 export const Duty = () => {
   return (
     <>
-      <DutyForm />
+      <DutyList />
     </>
   )
 }

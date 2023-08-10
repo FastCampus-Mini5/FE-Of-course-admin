@@ -1,4 +1,4 @@
-import { StyledBaseSelect, StyledMonthSelect } from 'styles/index'
+import { StyledMonthSelect } from 'styles/index'
 
 interface SelectMonthProps {
   selectedMonth: string

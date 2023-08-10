@@ -1,5 +1,4 @@
 import { createContext } from 'react'
-import { User } from '@/pages'
 
 type UserState = {
   userLists: User[]

@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import styled from 'styled-components'
-import { VacationPendingApi, VacationProceedApi } from '@/api/api'
+import { VacationPendingApi } from '@/api/api'
 import { StyledBaseSection } from 'styles/index'
 import { commonTexts, vacationTexts } from '@/constants/index'
 import { VacationPendingListTable } from '.'
